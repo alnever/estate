@@ -38,7 +38,7 @@ class EstateTypeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
+            'name' => ['required', 'min:1', 'max:255', 'unique:estate_types,name'],
         ]);
 
         $estateType = new EstateType($request->all());
@@ -83,7 +83,7 @@ class EstateTypeController extends Controller
     {
         if ($request->input('name') != $estateType->name) {
             $this->validate($request,[
-                'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
+                'name' => ['required', 'min:1', 'max:255', 'unique:estate_types,name'],
             ]);
         }
 

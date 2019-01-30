@@ -6,6 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estate extends Model
 {
+    protected $fillable = [
+        'estate_type_id',
+        'goal_id',
+        'stage_id',
+        'address',
+        'rooms',
+        'floor',
+        'square',
+        'object_info',
+        'price',
+        'min_price',
+        'owner_info',
+        'publisher_id',
+        'published_at',
+        'realtor_id',
+        'process_at',
+        'sold_at',
+        'final_price',
+        'final_info',
+        'created_at',
+        'updated_at',
+        'deleted',
+    ];
 
     /**
      * estateType - get type of the estate object

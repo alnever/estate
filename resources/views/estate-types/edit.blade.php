@@ -14,7 +14,7 @@
                 {{ Form::text('name', null, ['class' => 'form-control', 'required']) }}
                 <div class="d-flex flex-row mt-2 justify-content-end">
                     {{ Form::submit('Save', ['class' => 'btn btn-success btn-admin'])}}
-                    <a href="{{ url()->previous() }}" class="btn btn-danger ml-2 btn-admin">Cancel</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-warning ml-2 btn-admin">Cancel</a>
                 </div>
             {{ Form::close() }}
 

@@ -6,10 +6,13 @@ This project is featured with:
 
 - Laravel 5.7
 - Bootstrap 4.1.3
+- TinyMCE
+- select2
 
 Additional Laravel packages:
 
 - laravelcollective/html
+- mews/purifier
 
 Main functionality:
 
@@ -34,3 +37,9 @@ Main functionality:
 - Relationships between models are described.
 - Locations: CRUD implemented.
 - Estate types: CRUD implemented.
+
+For estates:
+
+- Select2 library was installed and used for the locations selection.
+- TinyMCE editor was installed and used to edit text fields.
+- List view and Create from are created.

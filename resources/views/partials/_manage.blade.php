@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link" href="#">Objects</a>
+    <a class="nav-link {{ Request::is('estates*') ? 'active' : '' }}" href="{{ route('estates.index') }}">Estates</a>
   </li>
   <li class="nav-item">
     <a class="nav-link {{ Request::is('locations*') ? 'active' : '' }}" href="{{ route('locations.index') }}">Locations</a>

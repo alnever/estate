@@ -22,6 +22,7 @@ Route::redirect('/home', '/');
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/locations', 'LocationController');
     Route::resource('/estate-types', 'EstateTypeController');
+    Route::resource('/estates','EstateController');
 });
 
 // Authentication routes
