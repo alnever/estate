@@ -28,7 +28,9 @@ Main functionality:
 ### 2019-01-30
 
 - The basic front-end structure was created.
-- The authentication possibilities was added.
+- The authentication possibilities were added.
+- The administrators interface was secured using authentication.
 - Migrations for a catalog of estate objects were created with necessary seeders.
 - Relationships between models are described.
 - Locations: CRUD implemented.
+- Estate types: CRUD implemented.

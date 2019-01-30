@@ -21,6 +21,7 @@ Route::redirect('/home', '/');
 // Secured pages routes
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/locations', 'LocationController');
+    Route::resource('/estate-types', 'EstateTypeController');
 });
 
 // Authentication routes

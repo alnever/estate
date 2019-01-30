@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\EstateType;
 use Illuminate\Http\Request;
+use Session;
 
 class EstateTypeController extends Controller
 {
@@ -14,7 +15,8 @@ class EstateTypeController extends Controller
      */
     public function index()
     {
-        //
+        $estateType = EstateType::orderBy('name')->paginate(20);
+        return view('estate-types.index')->withEstateTypes($estateType);
     }
 
     /**
@@ -35,7 +37,17 @@ class EstateTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
+        ]);
+
+        $estateType = new EstateType($request->all());
+
+        $estateType->save();
+
+        Session::flash('success','The estate type was created successfully.');
+
+        return redirect()->route('estate-types.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class EstateTypeController extends Controller
      */
     public function edit(EstateType $estateType)
     {
-        //
+        return view('estate-types.edit')->withEstateType($estateType);
     }
 
     /**
@@ -69,7 +81,19 @@ class EstateTypeController extends Controller
      */
     public function update(Request $request, EstateType $estateType)
     {
-        //
+        if ($request->input('name') != $estateType->name) {
+            $this->validate($request,[
+                'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
+            ]);
+        }
+
+        $estateType->update($request->all());
+
+        $estateType->save();
+
+        Session::flash('success','The estate type was updated successfully.');
+
+        return redirect()->route('estate-types.index');
     }
 
     /**
@@ -80,6 +104,8 @@ class EstateTypeController extends Controller
      */
     public function destroy(EstateType $estateType)
     {
-        //
+        $estateType->delete();
+        Session::flash('success','The estate type was deleted successfully.');
+        return redirect()->route('estate-types.index');
     }
 }
