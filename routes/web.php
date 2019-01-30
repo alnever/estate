@@ -12,9 +12,16 @@
 */
 
 
+// Front-end pages routes
 Route::get('/','PageController@getIndex');
 Route::get('/about','PageController@getAbout');
 Route::get('/contact','PageController@getContact');
 Route::redirect('/home', '/');
 
+// Secured pages routes
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('/locations', 'LocationController');
+});
+
+// Authentication routes
 Auth::routes();

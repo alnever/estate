@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
+    protected $fillable = ['name', 'created_at', 'updated_at',];
 
     /**
      * estates - all objects linked with this locations

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use Session;
 
 class LocationController extends Controller
 {
@@ -14,7 +15,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::orderBy('name')->paginate(20);
+        return view('locations.index')->withLocations($locations);
     }
 
     /**
@@ -35,7 +37,17 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
+        ]);
+
+        $location = new Location($request->all());
+
+        $location->save();
+
+        Session::flash('success','The location was created successfully.');
+
+        return redirect()->route('locations.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        //
+        return view('locations.edit')->withLocation($location);
     }
 
     /**
@@ -69,7 +81,20 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
+        if ($request->input('name') != $location->name) {
+            $this->validate($request,[
+                'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
+            ]);
+        }
+        
+        $location->update($request->all());
+
+        $location->save();
+
+        Session::flash('success','The location was updated successfully.');
+
+        return redirect()->route('locations.index');
+
     }
 
     /**
@@ -80,6 +105,8 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location->delete();
+        Session::flash('success','The location was deleted successfully.');
+        return redirect()->route('locations.index');
     }
 }

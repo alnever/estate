@@ -31,3 +31,4 @@ Main functionality:
 - The authentication possibilities was added.
 - Migrations for a catalog of estate objects were created with necessary seeders.
 - Relationships between models are described.
+- Locations: CRUD implemented.
