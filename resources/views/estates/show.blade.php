@@ -10,7 +10,8 @@
                 <span>Estate: {{ $estate->address }}</span>
                 <div class="d-flex flex-row">
                     <a href="{{ route('estates.edit', $estate->id) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
-                    {{ Form::open(['route' => ['estates.destroy', $estate->id], 'method' => 'DELETE']) }}
+                    {{ Form::model($estate, ['route' => ['estates.update', $estate->id], 'method' => 'PUT']) }}
+                        {{ Form::hidden('deleted',1) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
                     <a href="{{ route('estates.index') }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
@@ -80,13 +81,13 @@
                 </p>
             </div>
 
-
             <!-- form footer -->
             <h3 class="d-flex flex-row justify-content-between mt-2">
                 <span>&nbsp;</span>
                 <div class="d-flex flex-row">
                     <a href="{{ route('estates.edit', $estate->id) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
-                    {{ Form::open(['route' => ['estates.destroy', $estate->id], 'method' => 'DELETE']) }}
+                    {{ Form::model($estate, ['route' => ['estates.update', $estate->id], 'method' => 'PUT']) }}
+                        {{ Form::hidden('deleted',1) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
                     <a href="{{ route('estates.index') }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>

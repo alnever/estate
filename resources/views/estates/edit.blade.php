@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('final_price','Final price:', ['class' => 'text-nowrap']) }}
-                        {{ Form::text('final_price', null, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
+                        {{ Form::text('final_price', null, ['class' => 'form-control text-success font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
                     </div>
                 </div>
 

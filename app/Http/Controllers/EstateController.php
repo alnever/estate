@@ -22,8 +22,28 @@ class EstateController extends Controller
      */
     public function index()
     {
-        $estates = Estate::orderBy('created_at','desc')->paginate(10);
-        return view('estates.index')->withEstates($estates);
+        $params = request()->query();
+
+        $estates = Estate::orderBy('created_at','desc');
+
+        if (isset($params['deleted']) && $params['deleted'] == 1) {
+            $estates = $estates->where('deleted','=', 1);
+        } else {
+            $estates = $estates->where('deleted','=', 0);
+        }
+
+        if (isset($params['sell']) && $params['sell'] == 1 && !isset($params['rent'])) {
+            $estates = $estates->where('goal_id','=', 1);
+        } else if (!isset($params['sell']) && isset($params['rent']) && $params['rent'] == 1 ) {
+            $estates = $estates->where('goal_id','=', 2);
+        }
+
+        $estates = $estates->paginate(10);
+
+        //$estates = Estate::where('deleted','=',0)->orderBy('created_at','desc')->paginate(10);
+        return view('estates.index')
+            ->withEstates($estates)
+            ->withParams($params);
     }
 
     /**
@@ -77,12 +97,12 @@ class EstateController extends Controller
             'estate_type_id' => ['required'],
             'goal_id' => ['required'],
             'address' => ['required','max:255'],
-            'rooms' => ['integer'],
-            'floor' => ['integer'],
-            'square' => ['numeric'],
+            'rooms' => ['integer','nullable'],
+            'floor' => ['integer','nullable'],
+            'square' => ['numeric','nullable'],
             'price' => ['required', 'numeric'],
-            'min_price' => ['numeric'],
-            'realtor_id' => ['integer'],
+            'min_price' => ['numeric','nullable'],
+            'realtor_id' => ['integer','nullable'],
         ]);
 
         // create estate with the given information
@@ -178,20 +198,23 @@ class EstateController extends Controller
     public function update(Request $request, Estate $estate)
     {
         // validation
-        $this->validate($request,[
-            'estate_type_id' => ['required'],
-            'goal_id' => ['required'],
-            'address' => ['required','max:255'],
-            'rooms' => ['integer'],
-            'floor' => ['integer'],
-            'square' => ['numeric'],
-            'price' => ['required', 'numeric'],
-            'min_price' => ['numeric'],
-            'realtor_id' => ['integer'],
-        ]);
+        if (! $request->deleted) {
+            $this->validate($request,[
+                'estate_type_id' => ['required'],
+                'goal_id' => ['required'],
+                'address' => ['required','max:255'],
+                'rooms' => ['integer','nullable'],
+                'floor' => ['integer','nullable'],
+                'square' => ['numeric','nullable'],
+                'price' => ['required', 'numeric'],
+                'min_price' => ['numeric','nullable'],
+                'final_price' => ['numeric','nullable'],
+                'realtor_id' => ['integer','nullable'],
+            ]);
+        }
 
         // in addition: set realtor and stage
-        if ($request->realtor_id && $request->realtor_id != 0 && $request->realtor_id != $request->realtor_id) {
+        if ($request->realtor_id && $request->realtor_id != 0 && $request->realtor_id != $estate->realtor_id) {
             $estate->stage_id = 2; // realtor is set - the estate is in process
             $estate->process_at = date('Y-m-d H:i:s');
         }
@@ -214,10 +237,13 @@ class EstateController extends Controller
         // save
         $estate->save();
 
-        Session::flash('success', 'The estate was successfully updated.');
-
-        return redirect()->route('estates.show', $estate->id);
-
+        if ($estate->deleted && $estate->deleted == 0) {
+            Session::flash('success', 'The estate was successfully updated.');
+            return redirect()->route('estates.show', $estate->id);
+        } else {
+            Session::flash('success', 'The estate was successfully deleted.');
+            return redirect()->route('estates.index');
+        }
     }
 
     /**
@@ -228,6 +254,6 @@ class EstateController extends Controller
      */
     public function destroy(Estate $estate)
     {
-        //
+
     }
 }

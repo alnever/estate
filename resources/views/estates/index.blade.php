@@ -9,6 +9,32 @@
                 <span>Estates</span>
                 <a href="{{ route('estates.create') }}" class="btn btn-success">Add new estate</a>
             </h3>
+            <!-- search form -->
+            <div class="col-12 d-flex flex-column border border-secondary rounded bg-light p-2">
+                <h4>Search parameters:</h4>
+                {{ Form::open(['route' => 'estates.index', 'method' => 'GET']) }}
+                    <div class="d-flex flex-row m-2 p-2">
+                        <div class="col-2">
+                            {{ Form::label('sell','Estates for sell') }}
+                            {{ Form::checkbox('sell',1, isset($params['sell']) && $params['sell'] == 1) }}
+                        </div>
+                        <div class="">
+                            {{ Form::label('rent','Estates for rent') }}
+                            {{ Form::checkbox('rent',1, isset($params['rent']) && $params['rent'] == 1) }}
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row m-2 p-2">
+                        <div class="col-3">
+                            {{ Form::label('deleted','Show deleted objects')}}
+                            {{ Form::checkbox('deleted',1, isset($params['deleted']) && $params['deleted'] == 1) }}
+                        </div>
+                    </div>
+
+                    {{ Form::submit('Search',['class' => 'btn btn-secondary btn-admin float-right']) }}
+                {{ Form::close() }}
+            </div>
+            <!-- end of search form -->
             <!-- messages area -->
             @include('partials._messages')
             <!-- should be table -->
@@ -71,6 +97,10 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <div class="d-flex flex-row justify-content-center">
+                {{ $estates->links() }}
+            </div>
         </div>
     </div>
 
