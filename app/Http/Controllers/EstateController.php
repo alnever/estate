@@ -22,28 +22,105 @@ class EstateController extends Controller
      */
     public function index()
     {
+        // get search params
         $params = request()->query();
 
+        $this->validate(request(),[
+            'min_price' => ['nullable', 'integer'],
+            'max_price' => ['nullable', 'integer'],
+        ]);
+
+        // initial select
         $estates = Estate::orderBy('created_at','desc');
 
-        if (isset($params['deleted']) && $params['deleted'] == 1) {
-            $estates = $estates->where('deleted','=', 1);
+        if (count($params) > 0) {
+            // select deleted or undeleted
+            if (isset($params['deleted']) && $params['deleted'] == 1) {
+                $estates = $estates->where('deleted','=', 1);
+            } else {
+                $estates = $estates->where('deleted','=', 0);
+            }
+
+            // select by goal
+            if (!isset($params['sell'])) {
+                $estates = $estates->where('goal_id','!=',1);
+            }
+            if (!isset($params['rent'])) {
+                $estates = $estates->where('goal_id','!=',2);
+            }
+            $params['sell'] = (isset($params['sell']) ? $params['sell'] : 0);
+            $params['rent'] = (isset($params['rent']) ? $params['rent'] : 0);
+
+            // select by stage
+            if (!isset($params['published'])) {
+                $estates = $estates->where('stage_id','!=',1);
+            }
+            if (!isset($params['process'])) {
+                $estates = $estates->where('stage_id','!=',2);
+            }
+            if (!isset($params['sold'])) {
+                $estates = $estates->where('stage_id','!=',3);
+            }
+            $params['published'] = isset($params['published']) ? $params['published'] : 0;
+            $params['process'] = isset($params['process']) ? $params['process'] : 0;
+            $params['sold'] = isset($params['sold']) ? $params['sold'] : 0;
+
+            // select by realtor
+            if (isset($params['realtor'])) {
+                $estates = $estates->where('realtor_id','=',$params['realtor']);
+            }
+
+            // search by prices
+            if (isset($params['min_price'])) {
+                $estates = $estates->where('price','>=',$params['min_price']);
+            }
+            if (isset($params['max_price'])) {
+                $estates = $estates->where('price','<=',$params['max_price']);
+            }
+
+            // search by locations
+            if (isset($params['locations']) && count($params['locations'])) {
+                // $locationsIds = implode(',',$params['locations']);
+                $locationsIds = $params['locations'];
+                $estates = $estates->whereHas('locations', function($query) use ($locationsIds) {
+                    $query->whereIn('locations.id',$locationsIds);
+                });
+            }
+
         } else {
+            // the query string is empry search with default parameters
+            // get undeleted estates
             $estates = $estates->where('deleted','=', 0);
+            // set default values for search params
+            $params['sell'] = 1;
+            $params['rent'] = 1;
+            $params['published'] = 1;
+            $params['process'] = 1;
+            $params['sold'] = 1;
+            $params['deleted'] = 0;
         }
 
-        if (isset($params['sell']) && $params['sell'] == 1 && !isset($params['rent'])) {
-            $estates = $estates->where('goal_id','=', 1);
-        } else if (!isset($params['sell']) && isset($params['rent']) && $params['rent'] == 1 ) {
-            $estates = $estates->where('goal_id','=', 2);
-        }
-
+        // paginate select results
         $estates = $estates->paginate(10);
+
+        // get realtors
+        $realtors = [];
+        foreach (User::all() as $user) {
+            $realtors[$user->id] = $user->name;
+        }
+
+        // get locations
+        $locations = [];
+        foreach (Location::all() as $location) {
+            $locations[$location->id] = $location->name;
+        }
 
         //$estates = Estate::where('deleted','=',0)->orderBy('created_at','desc')->paginate(10);
         return view('estates.index')
             ->withEstates($estates)
-            ->withParams($params);
+            ->withParams($params)
+            ->withRealtors($realtors)
+            ->withLocations($locations);
     }
 
     /**

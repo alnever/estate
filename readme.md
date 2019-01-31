@@ -47,3 +47,6 @@ For estates:
 ### 2019-01-31
 
 - Estates: view and edit created
+- Delete for estates was implemented as soft delete. Now, it uses a special field 'deleted'. TODO:: change the realization using standard Laravel mechanism.
+- All CRUD operations for Estates are finished.
+- The search form for Estates was created. It allows to search estates by type, status/stage, locations, realtors, and prices.

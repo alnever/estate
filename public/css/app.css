@@ -10502,3 +10502,7 @@ a.text-dark:focus {
   }
 }
 
+input[type=checkbox] {
+  max-height: 20px;
+}
+
