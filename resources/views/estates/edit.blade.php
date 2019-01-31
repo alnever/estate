@@ -24,10 +24,10 @@
             <!-- messages area -->
             @include('partials._messages')
             <!-- form for estates -->
-            {{ Form::open(['route' => 'estates.store', 'method' => 'POST'])}}
+            {{ Form::model($estate,['route' => ['estates.update', $estate->id], 'method' => 'PUT'])}}
                 <!-- form header -->
                 <h3 class="d-flex flex-row justify-content-between">
-                    <span>New Estate</span>
+                    <span>Edit estate: {{ $estate->address}}</span>
                     <div class="d-flex flex-row">
                         {{ Form::submit('Save',['class' => 'btn btn-success btn-admin'])}}
                         <a href="{{ url()->previous() }}" class="btn btn-warning ml-2 btn-admin">Cancel</a>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('realtor_id','Realtor:',['class' => 'mt-2 text-nowrap']) }}
-                        {{ Form::select('realtor_id', $realtors, 0, ['class' => 'form-control', 'placeholder' => 'Choose a realtor...']) }}
+                        {{ Form::select('realtor_id', $realtors, null, ['class' => 'form-control', 'placeholder' => 'Choose a realtor...']) }}
                     </div>
                 </div>
 
@@ -60,26 +60,30 @@
                 <div class="row d-flex flex-row mt-2">
                     <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('rooms','Rooms:') }}
-                        {{ Form::text('rooms', 0, ['class' => 'form-control', 'placeholder' => 'Enter number of rooms...'])}}
+                        {{ Form::text('rooms', null, ['class' => 'form-control', 'placeholder' => 'Enter number of rooms...'])}}
                     </div>
                     <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('square','Square:') }}
-                        {{ Form::text('square', 0, ['class' => 'form-control', 'placeholder' => 'Enter a square...'])}}
+                        {{ Form::text('square', null, ['class' => 'form-control', 'placeholder' => 'Enter a square...'])}}
                     </div>
                     <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('floor','Floor:') }}
-                        {{ Form::text('floor', 0, ['class' => 'form-control', 'placeholder' => 'Enter a floor number...'])}}
+                        {{ Form::text('floor', null, ['class' => 'form-control', 'placeholder' => 'Enter a floor number...'])}}
                     </div>
                 </div>
 
                 <div class="row d-flex flex-row p-2 justify-content-between m-1 mt-2 border border-danger rounded font-weight-bold">
-                    <div class="col-5 d-flex flex-row align-items-center">
+                    <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('price','Price:') }}
-                        {{ Form::text('price', 0, ['class' => 'form-control text-primary font-weight-bold', 'placeholder' => 'Enter a wanted price...'])}}
+                        {{ Form::text('price', null, ['class' => 'form-control text-primary font-weight-bold', 'placeholder' => 'Enter a wanted price...'])}}
                     </div>
-                    <div class="col-5 d-flex flex-row align-items-center">
+                    <div class="col-4 d-flex flex-row align-items-center">
                         {{ Form::label('min_price','Minimal price:', ['class' => 'text-nowrap']) }}
-                        {{ Form::text('min_price', 0, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
+                        {{ Form::text('min_price', null, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
+                    </div>
+                    <div class="col-4 d-flex flex-row align-items-center">
+                        {{ Form::label('final_price','Final price:', ['class' => 'text-nowrap']) }}
+                        {{ Form::text('final_price', null, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
                     </div>
                 </div>
 
@@ -89,6 +93,8 @@
                 {{ Form::label('owner_info','Information about owners of the estate:',['class' => 'mt-2']) }}
                 {{ Form::textarea('owner_info', null, ['class' => 'form-control', 'rows' => 5])}}
 
+                {{ Form::label('final_info','Final information:',['class' => 'mt-2']) }}
+                {{ Form::textarea('final_info', null, ['class' => 'form-control', 'rows' => 5])}}
 
                 <!-- end of form body -->
 

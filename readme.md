@@ -43,3 +43,7 @@ For estates:
 - Select2 library was installed and used for the locations selection.
 - TinyMCE editor was installed and used to edit text fields.
 - List view and Create from are created.
+
+### 2019-01-31
+
+- Estates: view and edit created
