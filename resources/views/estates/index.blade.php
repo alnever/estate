@@ -75,6 +75,7 @@
                 {{ Form::close() }}
             </div>
             <!-- end of search form -->
+
             <!-- messages area -->
             @include('partials._messages')
             <!-- should be table -->
@@ -83,11 +84,12 @@
                     <th width="3%">#</th>
                     <th width="5%">Goal</th>
                     <th width="5%">Stage</th>
-                    <th width="30%">Estate Description</th>
-                    <th width="20%">Owner information</th>
+                    <th width="25%">Estate Description</th>
+                    <th width="15%">Owner information</th>
                     <th width="10%">Location</th>
                     <th width="10%">Price</th>
                     <th width="12%">Minimal Price</th>
+                    <th width="10%">Final Price</th>
                     <th width="10%">Realtor</th>
                 </thead>
                 <tbody>
@@ -101,7 +103,12 @@
                                 {{ $estate->stage->name }}
                             </td>
                             <td>
-                                <a href="{{ route('estates.show', $estate->id) }}" class="h4 text-primary">{{ $estate->address }}</a>
+                                @if ($estate->trashed())
+                                    <h4 class="text-primary">{{ $estate->address }}</h4>
+                                @else
+                                    <a href="{{ route('estates.show', $estate->id) }}" class="h4 text-primary">{{ $estate->address }}</a>
+                                @endif
+
                                 <p class="font-weight-bold">
                                     @if ($estate->rooms)
                                         Rooms: {{ $estate->rooms }}
@@ -127,6 +134,9 @@
                             </td>
                             <td class="text-danger font-weight-bold">
                                 {{ $estate->min_price }}
+                            </td>
+                            <td class="text-success font-weight-bold">
+                                {{ $estate->final_price }}
                             </td>
                             <td>
                                 @if ($estate->realtor)

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDeletedColToEstates extends Migration
+class ChangeFloorTypeForEstates extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddDeletedColToEstates extends Migration
     public function up()
     {
         Schema::table('estates', function (Blueprint $table) {
-            $table->integer('deleted')->default(0);
+            $table->string('floor')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AddDeletedColToEstates extends Migration
     public function down()
     {
         Schema::table('estates', function (Blueprint $table) {
-            $table->dropColumn('deleted');
+            //
         });
     }
 }

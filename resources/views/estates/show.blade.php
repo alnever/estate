@@ -10,8 +10,7 @@
                 <span>Estate: {{ $estate->address }}</span>
                 <div class="d-flex flex-row">
                     <a href="{{ route('estates.edit', $estate->id) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
-                    {{ Form::model($estate, ['route' => ['estates.update', $estate->id], 'method' => 'PUT']) }}
-                        {{ Form::hidden('deleted',1) }}
+                    {{ Form::open(['route' => ['estates.destroy', $estate->id], 'method' => 'DELETE']) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
                     <a href="{{ route('estates.index') }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
@@ -36,11 +35,11 @@
 
             <div class="d-flex flex-column mt-2">
                 <strong>Locations:</strong>
-                <p>
+                <h4>
                     @foreach ($estate->locations as $location)
-                        <span>{{ $location->name }}</span>
+                        <span class=" badge badge-secondary">{{ $location->name }}</span>
                     @endforeach
-                </p>
+                </h4>
             </div>
 
             <div class="row d-flex flex-row mt-2">
@@ -51,7 +50,7 @@
                     Sqiare: <strong>{{ $estate->square }}</strong>
                 </div>
                 <div class="col-4 d-flex flex-row align-items-center">
-                    Floor: <strong>{{ $estate->gloor }}</strong>
+                    Floor: <strong>{{ $estate->floor }}</strong>
                 </div>
             </div>
 
@@ -86,8 +85,7 @@
                 <span>&nbsp;</span>
                 <div class="d-flex flex-row">
                     <a href="{{ route('estates.edit', $estate->id) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
-                    {{ Form::model($estate, ['route' => ['estates.update', $estate->id], 'method' => 'PUT']) }}
-                        {{ Form::hidden('deleted',1) }}
+                    {{ Form::open(['route' => ['estates.destroy', $estate->id], 'method' => 'DELETE']) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
                     <a href="{{ route('estates.index') }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
