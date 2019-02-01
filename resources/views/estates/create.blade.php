@@ -21,8 +21,6 @@
 @section('content')
     <div class="row">
         <div class="col-12 pt-2">
-            <!-- messages area -->
-            @include('partials._messages')
             <!-- form for estates -->
             {{ Form::open(['route' => 'estates.store', 'method' => 'POST'])}}
                 <!-- form header -->
@@ -34,6 +32,9 @@
                     </div>
                 </h3>
                 <!-- end of form header -->
+
+                <!-- messages area -->
+                @include('partials._messages')
 
                 <!-- form body -->
                 <div class="row d-flex flex-row mt-2 justify-content-between">
@@ -51,36 +52,50 @@
                     </div>
                 </div>
 
-                {{ Form::label('locations','Locations:',['class' => 'mt-2']) }}
-                {{ Form::select('locations[]', $locations, null, ['class' => 'form-control locations-select', 'multiple' => 'multiple']) }}
+                <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded font-weight-bold">
+                    <h4>Enter the information to identify the estate:</h4>
+                    {{ Form::label('locations','Locations:',['class' => 'mt-2']) }}
+                    {{ Form::select('locations[]', $locations, null, ['class' => 'form-control locations-select', 'multiple' => 'multiple']) }}
 
-                {{ Form::label('address','Address:',['class' => 'mt-2']) }}
-                {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter an address...'])}}
-
-                <div class="row d-flex flex-row mt-2">
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        {{ Form::label('rooms','Rooms:') }}
-                        {{ Form::text('rooms', 0, ['class' => 'form-control', 'placeholder' => 'Enter number of rooms...'])}}
-                    </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        {{ Form::label('square','Square:') }}
-                        {{ Form::text('square', 0, ['class' => 'form-control', 'placeholder' => 'Enter a square...'])}}
-                    </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        {{ Form::label('floor','Floor:') }}
-                        {{ Form::text('floor', 0, ['class' => 'form-control', 'placeholder' => 'Enter a floor number...'])}}
+                    {{ Form::label('address','Address:',['class' => 'mt-2']) }}
+                    {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter an address...'])}}
+                    <div class="row d-flex flex-row mt-2">
+                        <div class="col-4 d-flex flex-row align-items-center">
+                            {{ Form::label('rooms','Rooms:') }}
+                            {{ Form::text('rooms', 0, ['class' => 'form-control', 'placeholder' => 'Enter number of rooms...'])}}
+                        </div>
+                        <div class="col-4 d-flex flex-row align-items-center">
+                            {{ Form::label('square','Square:') }}
+                            {{ Form::text('square', 0, ['class' => 'form-control', 'placeholder' => 'Enter a square...'])}}
+                        </div>
+                        <div class="col-4 d-flex flex-row align-items-center">
+                            {{ Form::label('floor','Floor:') }}
+                            {{ Form::text('floor', 0, ['class' => 'form-control', 'placeholder' => 'Enter a floor number...'])}}
+                        </div>
                     </div>
                 </div>
 
-                <div class="row d-flex flex-row p-2 justify-content-between m-1 mt-2 border border-danger rounded font-weight-bold">
-                    <div class="col-5 d-flex flex-row align-items-center">
-                        {{ Form::label('price','Price:') }}
-                        {{ Form::text('price', 0, ['class' => 'form-control text-primary font-weight-bold', 'placeholder' => 'Enter a wanted price...'])}}
+                <div class="col-12 d-flex flex-column p-2 justify-content-between m-1 mt-2 border border-danger rounded font-weight-bold">
+                    <h4>Enter the information about prices:</h4>
+                    <div class="row d-flex flex-row mt-2">
+                        <div class="col-5 d-flex flex-row align-items-center">
+                            {{ Form::label('price','Price:') }}
+                            {{ Form::text('price', 0, ['class' => 'form-control text-primary font-weight-bold', 'placeholder' => 'Enter a wanted price...'])}}
+                        </div>
+                        <div class="col-5 d-flex flex-row align-items-center">
+                            {{ Form::label('min_price','Minimal price:', ['class' => 'text-nowrap']) }}
+                            {{ Form::text('min_price', 0, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
+                        </div>
                     </div>
-                    <div class="col-5 d-flex flex-row align-items-center">
-                        {{ Form::label('min_price','Minimal price:', ['class' => 'text-nowrap']) }}
-                        {{ Form::text('min_price', 0, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
-                    </div>
+                </div>
+
+                <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded font-weight-bold">
+                    <h4>Enter the information which will be shown to users:</h4>
+                    {{ Form::label('title','Title:',['class' => 'mt-2']) }}
+                    {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter an address...'])}}
+
+                    {{ Form::label('description','Description for advertisment:',['class' => 'mt-2']) }}
+                    {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => 5])}}
                 </div>
 
                 {{ Form::label('object_info','Information about the estate:',['class' => 'mt-2']) }}

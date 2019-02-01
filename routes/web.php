@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/locations', 'LocationController');
     Route::resource('/estate-types', 'EstateTypeController');
     Route::resource('/estates','EstateController');
+    Route::get('/estates/{estate}/restore','EstateController@restore')->name('estates.restore');
 });
 
 // Authentication routes

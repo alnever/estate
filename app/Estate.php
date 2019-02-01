@@ -33,6 +33,8 @@ class Estate extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'title',
+        'description',
     ];
 
     /**

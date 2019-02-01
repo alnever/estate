@@ -100,7 +100,11 @@
                                 {{ $estate->goal->name }}
                             </td>
                             <td>
-                                {{ $estate->stage->name }}
+                                @if ($estate->trashed())
+                                    <a href="{{ route('estates.restore', $estate->id) }}" class="btn btn-outline-success">Restote</a>
+                                @else
+                                    {{ $estate->stage->name }}
+                                @endif
                             </td>
                             <td>
                                 @if ($estate->trashed())

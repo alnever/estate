@@ -50,4 +50,7 @@ For estates:
 - To delete estates objects, soft deleting is used with standard mechanics of Laravel.
 - The search form for Estates was created.
 
-TODO:: restore deleted objects!
+### 2019-02-01
+
+- Some additional fields are added into the table 'estates'.
+- The restore function for estates was implemented.

@@ -309,7 +309,7 @@ class EstateController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage. This is soft delete!!!
      *
      * @param  \App\Estate  $estate
      * @return \Illuminate\Http\Response
@@ -320,4 +320,18 @@ class EstateController extends Controller
         Session::flash('success', 'The estate was successfully deleted.');
         return redirect()->route('estates.index');
     }
+
+    /**
+     * Restore the specified resource from trash.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     public function restore($id) {
+         $estate = Estate::onlyTrashed()->find($id);
+         $estate->restore();
+         Session::flash('success', 'The estate was successfully restored.');
+         return redirect()->route('estates.show',$estate->id);
+     }
+
 }
