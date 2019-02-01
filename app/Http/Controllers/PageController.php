@@ -50,11 +50,11 @@ class PageController extends Controller
 
             // ... maximal price
             if (isset($params['max_price'])) {
-                $estates = $estates->where('price','>=',$params['max_price']);
+                $estates = $estates->where('price','<=',$params['max_price']);
             }
 
             // ... selected locations
-            if (isset($param['locations']) && count($locations) > 0) {
+            if (isset($params['locations']) && count($params['locations']) > 0) {
                 $locationsIds = $params['locations'];
                 $estates = $estates->whereHas('locations', function($query) use ($locationsIds) {
                     $query->whereIn('locations.id',$locationsIds);
