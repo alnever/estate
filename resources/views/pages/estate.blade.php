@@ -2,11 +2,6 @@
 
 @section('title', '| Home')
 
-@section('styles')
-    <!-- for select 2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-@endsection
-
 @section('content')
     <!-- header -->
     <div class="header">
@@ -57,12 +52,4 @@
         </div>
     </div>
 
-@endsection
-
-@section('scripts')
-    <!-- for select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script type="text/javascript">
-      $('.locations-select').select2();
-    </script>
 @endsection

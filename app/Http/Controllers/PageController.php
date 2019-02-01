@@ -34,7 +34,7 @@ class PageController extends Controller
         }
 
         // get estates
-        $estates = Estate::orderBy('created_at','desc');
+        $estates = Estate::orderBy('created_at','desc')->where('stage_id','!=',3);
 
         // apply seach parameters
         if (count($params) > 0) {
