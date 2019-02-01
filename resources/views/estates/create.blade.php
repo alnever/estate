@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-12 pt-2">
             <!-- form for estates -->
-            {{ Form::open(['route' => 'estates.store', 'method' => 'POST'])}}
+            {{ Form::open(['route' => 'estates.store', 'method' => 'POST', 'files' => true])}}
                 <!-- form header -->
                 <h3 class="d-flex flex-row justify-content-between">
                     <span>New Estate</span>
@@ -75,6 +75,7 @@
                     </div>
                 </div>
 
+
                 <div class="col-12 d-flex flex-column p-2 justify-content-between m-1 mt-2 border border-danger rounded font-weight-bold">
                     <h4>Enter the information about prices:</h4>
                     <div class="row d-flex flex-row mt-2">
@@ -96,6 +97,9 @@
 
                     {{ Form::label('description','Description for advertisment:',['class' => 'mt-2']) }}
                     {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => 5])}}
+
+                    {{ Form::label('main_image','Featured image:',['class' => 'h4'])}}
+                    {{ Form::file('main_image') }}
                 </div>
 
                 {{ Form::label('object_info','Information about the estate:',['class' => 'mt-2']) }}

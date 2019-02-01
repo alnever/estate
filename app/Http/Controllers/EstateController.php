@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Session;
 use Purifier;
 use Auth;
+use Image;
 
 use App\Goal;
 use App\EstateType;
@@ -173,6 +174,7 @@ class EstateController extends Controller
             'price' => ['required', 'numeric'],
             'min_price' => ['numeric','nullable'],
             'realtor_id' => ['integer','nullable'],
+            'title' => ['max:255','required'],
         ]);
 
         // create estate with the given information
@@ -194,6 +196,19 @@ class EstateController extends Controller
         $estate->object_info = Purifier::clean($estate->object_info);
         $estate->owner_info  = Purifier::clean($estate->owner_info);
         $estate->final_info  = Purifier::clean($estate->final_info);
+
+        // load main image
+        if ($request->hasFile('main_image')) {
+          $image = $request->file('main_image');
+          $filename = time() . "." . $image->getClientOriginalExtension();
+          $location = public_path("uploads/images/" . $filename);
+
+          Image::make($image)->resize(1024, null, function($constraint) {
+            $constraint->aspectRatio();
+          })->save($location);
+
+          $estate->main_image = $filename;
+        }
 
         // save
         $estate->save();
@@ -277,6 +292,7 @@ class EstateController extends Controller
             'min_price' => ['numeric','nullable'],
             'final_price' => ['numeric','nullable'],
             'realtor_id' => ['integer','nullable'],
+            'title' => ['max:255','required'],
         ]);
 
         // in addition: set realtor and stage
@@ -299,6 +315,28 @@ class EstateController extends Controller
 
         // set Locations
         $estate->locations()->sync($request->input('locations'), true);
+
+        // save image
+        if ($request->hasFile('main_image')) {
+          $image = $request->file('main_image');
+
+          // replace file if exists
+          if ($estate->main_image && $estate->main_image != '') {
+            $filename = $estate->main_image;
+          } else {
+            $filename = time() . "." . $image->getClientOriginalExtension();
+          }
+
+          //
+          $location = public_path("uploads/images/" . $filename);
+
+          Image::make($image)->resize(1024, null, function($constraint) {
+            $constraint->aspectRatio();
+          })->save($location);
+
+          // save to the database
+          $estate->main_image = $filename;
+        }
 
         // save
         $estate->save();

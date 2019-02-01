@@ -75,10 +75,17 @@
 
             <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded">
                 <h4>Advertisment information:</h4>
-                <h5>{{ $estate->title }}</h5>
-                <p>
-                    {!! $estate->description !!}
-                </p>
+                <div class="d-flex flex-row">
+                    <div class="col-4">
+                        <img src="{{ asset('uploads/images/' . $estate->main_image) }}" alt="" class='info-image'>
+                    </div>
+                    <div class="col-8">
+                        <h5>{{ $estate->title }}</h5>
+                        <p>
+                            {!! $estate->description !!}
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded">
