@@ -44,7 +44,7 @@
     </div>
 
     <!-- main body -->
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
             @foreach ($estates as $estate)
                 <div class="col-4 p-2 estate-block">
@@ -62,7 +62,7 @@
                     <h3>{{ $estate->title }}</h3>
                     <p>{!! Str::words($estate->description, 30) !!}</p>
 
-                    <a href="#" class="btn btn-primary float-right">Show more...</a>
+                    <a href="{{ route('estates.single', $estate->id) }}" class="btn btn-primary float-right">Show more...</a>
                 </div>
             @endforeach
         </div>
@@ -70,6 +70,7 @@
         <div class="d-flex flex-row justify-content-center">
             {{ $estates->links() }}
         </div>
+
     </div>
 
 @endsection

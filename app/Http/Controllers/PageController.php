@@ -10,6 +10,12 @@ use App\Estate;
 
 class PageController extends Controller
 {
+
+    /**
+     * getIndex - get list of estates and provides search functions
+     *
+     * @return Illuminate\Http\Responce
+     */
     public function getIndex() {
 
         // get query parameters
@@ -73,5 +79,9 @@ class PageController extends Controller
 
     public function getContact() {
         return view('pages.contact');
+    }
+
+    public function getEstate(Estate $estate) {
+        return view('pages.estate')->withEstate($estate);
     }
 }

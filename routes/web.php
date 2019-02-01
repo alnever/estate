@@ -18,6 +18,8 @@ Route::get('/about','PageController@getAbout');
 Route::get('/contact','PageController@getContact');
 Route::redirect('/home', '/');
 
+Route::get('/estate/{estate}','PageController@getEstate')->name('estates.single');
+
 // Secured pages routes
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/locations', 'LocationController');
@@ -27,4 +29,4 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 // Authentication routes
-Auth::routes();
+Auth::routes(['register' => false]);
