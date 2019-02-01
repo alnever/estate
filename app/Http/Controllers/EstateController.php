@@ -79,7 +79,6 @@ class EstateController extends Controller
 
             // search by locations
             if (isset($params['locations']) && count($params['locations'])) {
-                // $locationsIds = implode(',',$params['locations']);
                 $locationsIds = $params['locations'];
                 $estates = $estates->whereHas('locations', function($query) use ($locationsIds) {
                     $query->whereIn('locations.id',$locationsIds);

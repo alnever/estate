@@ -54,3 +54,4 @@ For estates:
 
 - Some additional fields are added into the table 'estates'.
 - The restore function for estates was implemented.
+- Main page was added with a search form.

@@ -13,7 +13,7 @@
 
 
 // Front-end pages routes
-Route::get('/','PageController@getIndex');
+Route::get('/','PageController@getIndex')->name('pages.index');
 Route::get('/about','PageController@getAbout');
 Route::get('/contact','PageController@getContact');
 Route::redirect('/home', '/');

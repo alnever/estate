@@ -10506,3 +10506,19 @@ input[type=checkbox] {
   max-height: 20px;
 }
 
+.header {
+  width: 100vw;
+  height: 50vh;
+  background-image: linear-gradient(to bottom, #21212180, #ffffff00), url(/images/header.jpg?ad538b66848527974d1e38485236d879);
+  background-position: center;
+  padding: 20px;
+}
+
+.bg-semi-light {
+  background-color: #88888888;
+}
+
+.estate-block {
+  height: auto;
+}
+

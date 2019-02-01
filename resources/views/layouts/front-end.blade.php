@@ -7,9 +7,7 @@
 
     @include('partials._nav')
 
-    <div class="container">
-        @yield('content')
-    </div>
+    @yield('content')
 
     @include('partials._footer')
 
