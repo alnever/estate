@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-8">
             <h1 class="display-1 text-white">Real Estate Agency</h1>
-            <h3 class="text-white">Aliquam erat volutpat. Fusce congue, nisi at pulvinar rutrum, mi lorem interdum justo, vitae bibendum sapien libero at odio. Nunc pellentesque tellus non sem pellentesque porttitor. Nullam quis elit eu magna dignissim sodales. Sed at lorem pellentesque, eleifend turpis id, vehicula mi. Nam quis elit in dolor sodales elementum vel at ex.</h3>
+            <h2 class="display-3 text-white">About the Agency</h3>
         </div>
         <div class="col-4">
             {{-- something --}}

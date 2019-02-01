@@ -10507,11 +10507,11 @@ input[type=checkbox] {
 }
 
 .header {
-  width: 100vw;
-  height: 50vh;
+  width: 100%;
   background-image: linear-gradient(to bottom, #21212180, #ffffff00), url(/images/header.jpg?ad538b66848527974d1e38485236d879);
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: 20px;
 }
 

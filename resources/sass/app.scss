@@ -25,15 +25,16 @@ input[type=checkbox] {
 }
 
 .header {
-    width: 100vw;
-    height: 50vh;
+    width: 100%;
     background-image:
         linear-gradient(to bottom, #21212180, #ffffff00),
         url('../images/header.jpg');
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 20px;
 }
+
 
 .bg-semi-light {
     background-color: #88888888;

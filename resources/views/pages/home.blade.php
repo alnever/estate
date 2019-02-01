@@ -10,14 +10,14 @@
 @section('content')
 
     <!-- header -->
-    <div class="header">
-      <div class="row">
+    <div class="header container-fluid">
+      <div class="col-12 d-flex flex-row">
         <div class="col-8">
             <h1 class="display-1 text-white">Real Estate Agency</h1>
             <h3 class="text-white">Aliquam erat volutpat. Fusce congue, nisi at pulvinar rutrum, mi lorem interdum justo, vitae bibendum sapien libero at odio. Nunc pellentesque tellus non sem pellentesque porttitor. Nullam quis elit eu magna dignissim sodales. Sed at lorem pellentesque, eleifend turpis id, vehicula mi. Nam quis elit in dolor sodales elementum vel at ex.</h3>
         </div>
         <div class="col-4">
-            <div class="d-flex flex-column border border-light rounded bg-semi-light m-2 p-2">
+            <div class="d-flex flex-column border border-light rounded bg-semi-light p-2">
                 <h3 class="text-light">Find your home</h3>
                 {{ Form::open(['route' => 'pages.index', 'method' => 'GET']) }}
                     <div class="mt-2">

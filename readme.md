@@ -58,3 +58,10 @@ For estates:
 - Main page was added with a search form.
 - The main images for the estates are added.
 - The page for a single estate was basically created.
+- Some UI issues were fixed.
+
+TODO::
+
+- Localization!
+- UI: make message forms to functionate: they should send messages using AJAX, so, API-controller for messages need be created.
+- Remarks for estate objects: CRUD and interface.
