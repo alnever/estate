@@ -94,6 +94,7 @@ class EstateController extends Controller
             $params['process'] = 1;
             $params['sold'] = 1;
             $params['deleted'] = 0;
+            request()->request->add($params);
         }
 
         // paginate select results and pass form parameters

@@ -36,7 +36,7 @@
             <a class="dropdown-item" href="{{ route('estates.index', app()->getLocale()) }}">{{ __('messages.dashboard') }}</a>
             <div class="dropdown-divider"></div>
             <!-- logout button -->
-            {{ Form::open(['route' => 'logout', 'method' => 'POST']) }}
+            {{ Form::open(['route' => ['logout',app()->getLocale()], 'method' => 'POST']) }}
               {{ Form::submit(__('messages.logout'), ['class' => 'dropdown-item'])}}
             {{ Form::close() }}
             <!-- end of logout button -->

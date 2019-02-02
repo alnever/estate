@@ -22,6 +22,7 @@ Route::group(['prefix' => '{lang?}', 'middleware' => 'lang'], function () {
 
     Route::get('/estate/{estate}','PageController@getEstate')->name('estates.single');
 
+    Auth::routes(['register' => false]);
 });
 
 // Secured pages routes
@@ -31,11 +32,9 @@ Route::group(['prefix' => '{lang?}', 'middleware' => ['lang','auth']], function(
     Route::resource('/estate-types', 'EstateTypeController');
     Route::resource('/estates','EstateController');
     Route::get('/estates/{estate}/restore','EstateController@restore')->name('estates.restore');
+
 });
 
 Route::permanentRedirect('/','/{lang}');
 
-
-
 // Authentication routes
-Auth::routes(['register' => false]);

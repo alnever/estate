@@ -72,3 +72,9 @@ Localization:
 
 - The routing and middleware were prepared for the localization.
 - The controllers and the views were fixed according the new requirements of the routing.
+- Localization of the UI was started.
+- Auth routing were fixed because of localization.
+
+In addition:
+
+- Search forms handling was fixed.
