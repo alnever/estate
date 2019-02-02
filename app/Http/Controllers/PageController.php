@@ -63,7 +63,7 @@ class PageController extends Controller
         }
 
         // paginate results
-        $estates = $estates->paginate(12);
+        $estates = $estates->paginate(12)->appends(request()->except('page'));
 
         // pass results to view`
         return view('pages.home')

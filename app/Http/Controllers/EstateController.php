@@ -96,8 +96,8 @@ class EstateController extends Controller
             $params['deleted'] = 0;
         }
 
-        // paginate select results
-        $estates = $estates->paginate(10);
+        // paginate select results and pass form parameters
+        $estates = $estates->paginate(10)->appends(request()->except('page'));
 
         // get realtors
         $realtors = [];

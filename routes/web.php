@@ -17,8 +17,8 @@
 Route::group(['prefix' => '{lang?}', 'middleware' => 'lang'], function () {
 
     Route::get('/','PageController@getIndex')->name('pages.index');
-    Route::get('/about','PageController@getAbout');
-    Route::get('/contact','PageController@getContact');
+    Route::get('/about','PageController@getAbout')->name('pages.about');
+    Route::get('/contact','PageController@getContact')->name('pages.contact');
 
     Route::get('/estate/{estate}','PageController@getEstate')->name('estates.single');
 

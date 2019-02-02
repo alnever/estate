@@ -13,30 +13,32 @@
     <div class="header container-fluid">
       <div class="col-12 d-flex flex-row">
         <div class="col-8">
-            <h1 class="display-1 text-white">Real Estate Agency</h1>
-            <h3 class="text-white">Aliquam erat volutpat. Fusce congue, nisi at pulvinar rutrum, mi lorem interdum justo, vitae bibendum sapien libero at odio. Nunc pellentesque tellus non sem pellentesque porttitor. Nullam quis elit eu magna dignissim sodales. Sed at lorem pellentesque, eleifend turpis id, vehicula mi. Nam quis elit in dolor sodales elementum vel at ex.</h3>
+            <h1 class="display-1 text-white">{{ __('messages.title') }}</h1>
+            <h3 class="text-white">{{ __('messages.sub-title') }}</h3>
         </div>
         <div class="col-4">
             <div class="d-flex flex-column border border-light rounded bg-semi-light p-2">
-                <h3 class="text-light">Find your home</h3>
+                <h3 class="text-light">
+                    {{ __('messages.form-title') }}
+                </h3>
                 {{ Form::open(['route' => ['pages.index', app()->getLocale()], 'method' => 'GET']) }}
                     <div class="mt-2">
-                        {{ Form::label('goal','You are looking for:', ['class' => 'h4 text-white'])}}
+                        {{ Form::label('goal',__('messages.form-goal'), ['class' => 'h4 text-white'])}}
                         {{ Form::select('goal',$goals,(isset($params['goal']) ? $params['goal'] : null), ['class' => 'form-control', 'placeholder' => 'Pick your goal...']) }}
                     </div>
                     <div class=mt-2>
-                        {{ Form::label('locations','Preferred Locations:', ['class' => 'h4 text-white']) }}
+                        {{ Form::label('locations',__('messages.form-locations'), ['class' => 'h4 text-white']) }}
                         {{ Form::select('locations[]',$locations,(isset($params['locations']) ? $params['locations'] : null), ['class' => 'form-control locations-select', 'multiple' => 'multiple']) }}
                     </div>
                     <div class="mt-2">
-                        {{ Form::label('min_price','Minimal Price:', ['class' => 'h4 text-white'])}}
+                        {{ Form::label('min_price',__('messages.form-min-price'), ['class' => 'h4 text-white'])}}
                         {{ Form::text('min_price',(isset($params['min_price']) ? $params['min_price'] : null), ['class' => 'form-control', 'placeholder' => 'Enter a minimal price...']) }}
                     </div>
                     <div class="mt-2">
-                        {{ Form::label('max_price','Maximal Price:', ['class' => 'h4 text-white'])}}
+                        {{ Form::label('max_price',__('messages.form-max-price'), ['class' => 'h4 text-white'])}}
                         {{ Form::text('max_price',(isset($params['max_price']) ? $params['max_price'] : null), ['class' => 'form-control', 'placeholder' => 'Enter a maximal price...']) }}
                     </div>
-                    {{ Form::submit('Search', ['class' => 'btn btn-success btn-block mt-2']) }}
+                    {{ Form::submit(__('messages.search'), ['class' => 'btn btn-success btn-block mt-2']) }}
                 {{ Form::close() }}
             </div>
         </div>
@@ -62,7 +64,9 @@
                     <h3>{{ $estate->title }}</h3>
                     <p>{!! Str::words($estate->description, 30) !!}</p>
 
-                    <a href="{{ route('estates.single', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary float-right">Show more...</a>
+                    <a href="{{ route('estates.single', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary float-right">
+                        {{ __('messages.show-more') }}
+                    </a>
                 </div>
             @endforeach
         </div>

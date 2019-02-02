@@ -7,25 +7,25 @@
     <div class="header">
       <div class="row">
         <div class="col-8">
-            <h1 class="display-1 text-white">Real Estate Agency</h1>
-            <h3 class="text-white">Aliquam erat volutpat. Fusce congue, nisi at pulvinar rutrum, mi lorem interdum justo, vitae bibendum sapien libero at odio. Nunc pellentesque tellus non sem pellentesque porttitor. Nullam quis elit eu magna dignissim sodales. Sed at lorem pellentesque, eleifend turpis id, vehicula mi. Nam quis elit in dolor sodales elementum vel at ex.</h3>
+            <h1 class="display-1 text-white">{{ __('messages.title') }}</h1>
+            <h3 class="text-white">{{ __('messages.sub-title') }}</h3>
         </div>
         <div class="col-4">
             <div class="d-flex flex-column border border-light rounded bg-semi-light m-2 p-2">
-                <h3 class="text-light">Contact with a Realtor</h3>
-                <p class="text-white">If you're interested in this estate, feel free to send a message to our realtors using the contact form below</p>
+                <h3 class="text-light">{{ __('messages.contact-realtor') }}</h3>
+                <p class="text-white">{{ __('messages.contact-motivation') }}</p>
                 {{ Form::open(['method' => 'POST', 'name' => 'message-form']) }}
                     {{ csrf_field() }}
                     {{ Form::hidden('estate_id', $estate->id)}}
                     <div class="mt-2">
-                        {{ Form::label('email','Your email:', ['class' => 'h4 text-white'])}}
+                        {{ Form::label('email',__('messages.contact-email'), ['class' => 'h4 text-white'])}}
                         {{ Form::email('email',null, ['class' => 'form-control', 'placeholder' => 'Enter a valid email address...']) }}
                     </div>
                     <div class="mt-2">
-                        {{ Form::label('message','Your message:', ['class' => 'h4 text-white'])}}
+                        {{ Form::label('message',__('messages.contact-message'), ['class' => 'h4 text-white'])}}
                         {{ Form::textarea('max_price',null, ['class' => 'form-control', 'rows' => 5]) }}
                     </div>
-                    {{ Form::button('Send a message', ['class' => 'btn btn-success btn-block mt-2']) }}
+                    {{ Form::button(__('messages.send'), ['class' => 'btn btn-success btn-block mt-2']) }}
                 {{ Form::close() }}
             </div>
         </div>
