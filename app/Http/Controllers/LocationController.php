@@ -47,7 +47,7 @@ class LocationController extends Controller
 
         Session::flash('success','The location was created successfully.');
 
-        return redirect()->route('locations.index');
+        return redirect()->route('locations.index', app()->getLocale());
     }
 
     /**
@@ -86,14 +86,14 @@ class LocationController extends Controller
                 'name' => ['required', 'min:1', 'max:255', 'unique:locations,name'],
             ]);
         }
-        
+
         $location->update($request->all());
 
         $location->save();
 
         Session::flash('success','The location was updated successfully.');
 
-        return redirect()->route('locations.index');
+        return redirect()->route('locations.index', app()->getLocale());
 
     }
 
@@ -107,6 +107,6 @@ class LocationController extends Controller
     {
         $location->delete();
         Session::flash('success','The location was deleted successfully.');
-        return redirect()->route('locations.index');
+        return redirect()->route('locations.index', app()->getLocale());
     }
 }

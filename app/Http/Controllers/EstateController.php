@@ -218,7 +218,7 @@ class EstateController extends Controller
 
         Session::flash('success', 'The estate was successfully created.');
 
-        return redirect()->route('estates.index');
+        return redirect()->route('estates.index', app()->getLocale());
     }
 
     /**
@@ -342,7 +342,7 @@ class EstateController extends Controller
         $estate->save();
 
         Session::flash('success', 'The estate was successfully updated.');
-        return redirect()->route('estates.show', $estate->id);
+        return redirect()->route('estates.show', [app()->getLocale(), $estate->id]);
     }
 
     /**
@@ -355,7 +355,7 @@ class EstateController extends Controller
     {
         $estate->delete();
         Session::flash('success', 'The estate was successfully deleted.');
-        return redirect()->route('estates.index');
+        return redirect()->route('estates.index', app()->getLocale());
     }
 
     /**
@@ -368,7 +368,7 @@ class EstateController extends Controller
          $estate = Estate::onlyTrashed()->find($id);
          $estate->restore();
          Session::flash('success', 'The estate was successfully restored.');
-         return redirect()->route('estates.show',$estate->id);
+         return redirect()->route('estates.show',[app()->getLocale(), $estate->id]);
      }
 
 }

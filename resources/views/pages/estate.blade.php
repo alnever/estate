@@ -25,7 +25,7 @@
                         {{ Form::label('message','Your message:', ['class' => 'h4 text-white'])}}
                         {{ Form::textarea('max_price',null, ['class' => 'form-control', 'rows' => 5]) }}
                     </div>
-                    {{ Form::submit('Send a message', ['class' => 'btn btn-success btn-block mt-2']) }}
+                    {{ Form::button('Send a message', ['class' => 'btn btn-success btn-block mt-2']) }}
                 {{ Form::close() }}
             </div>
         </div>

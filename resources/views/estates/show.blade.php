@@ -9,11 +9,11 @@
             <h3 class="d-flex flex-row justify-content-between">
                 <span>Estate: {{ $estate->address }}</span>
                 <div class="d-flex flex-row">
-                    <a href="{{ route('estates.edit', $estate->id) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
-                    {{ Form::open(['route' => ['estates.destroy', $estate->id], 'method' => 'DELETE']) }}
+                    <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
+                    {{ Form::open(['route' => ['estates.destroy', app()->getLocale(), $estate->id], 'method' => 'DELETE']) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
-                    <a href="{{ route('estates.index') }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
+                    <a href="{{ route('estates.index', app()->getLocale()) }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
                 </div>
             </h3>
             <!-- end of form header -->
@@ -116,11 +116,11 @@
             <h3 class="d-flex flex-row justify-content-between mt-2">
                 <span>&nbsp;</span>
                 <div class="d-flex flex-row">
-                    <a href="{{ route('estates.edit', $estate->id) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
-                    {{ Form::open(['route' => ['estates.destroy', $estate->id], 'method' => 'DELETE']) }}
+                    <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
+                    {{ Form::open(['route' => ['estates.destroy', app()->getLocale(), $estate->id], 'method' => 'DELETE']) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
-                    <a href="{{ route('estates.index') }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
+                    <a href="{{ route('estates.index', app()->getLocale()) }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
                 </div>
             </h3>
         </div>

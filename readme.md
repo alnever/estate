@@ -65,3 +65,10 @@ TODO::
 - Localization!
 - UI: make message forms to functionate: they should send messages using AJAX, so, API-controller for messages need be created.
 - Remarks for estate objects: CRUD and interface.
+
+### 2019-02-02
+
+Localization:
+
+- The routing and middleware were prepared for the localization.
+- The controllers and the views were fixed according the new requirements of the routing.

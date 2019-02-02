@@ -12,12 +12,12 @@
         <div class="col-12 pt-2">
             <h3 class="d-flex flex-row justify-content-between">
                 <span>Estates</span>
-                <a href="{{ route('estates.create') }}" class="btn btn-success">Add new estate</a>
+                <a href="{{ route('estates.create', app()->getLocale()) }}" class="btn btn-success">Add new estate</a>
             </h3>
             <!-- search form -->
             <div class="col-12 d-flex flex-column border border-secondary rounded bg-light p-2 mb-2">
                 <h4>Search parameters:</h4>
-                {{ Form::open(['route' => 'estates.index', 'method' => 'GET']) }}
+                {{ Form::open(['route' => ['estates.index', app()->getLocale()], 'method' => 'GET']) }}
                     <div class="row d-flex flex-row p-2 text-nowrap">
                         <div class="col-4 d-flex flex-row justify-content-between p-2 align-items-center">
                             <h5 class="text-primary m-0 mr-2">Estates for:</h5>
@@ -101,7 +101,7 @@
                             </td>
                             <td>
                                 @if ($estate->trashed())
-                                    <a href="{{ route('estates.restore', $estate->id) }}" class="btn btn-outline-success">Restote</a>
+                                    <a href="{{ route('estates.restore', [app()->getLocale(), $estate->id]) }}" class="btn btn-outline-success">Restote</a>
                                 @else
                                     {{ $estate->stage->name }}
                                 @endif
@@ -110,7 +110,7 @@
                                 @if ($estate->trashed())
                                     <h4 class="text-primary">{{ $estate->address }}</h4>
                                 @else
-                                    <a href="{{ route('estates.show', $estate->id) }}" class="h4 text-primary">{{ $estate->address }}</a>
+                                    <a href="{{ route('estates.show', [app()->getLocale(), $estate->id]) }}" class="h4 text-primary">{{ $estate->address }}</a>
                                 @endif
 
                                 <p class="font-weight-bold">

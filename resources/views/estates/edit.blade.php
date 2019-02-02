@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-12 pt-2">
             <!-- form for estates -->,
-            {{ Form::model($estate,['route' => ['estates.update', $estate->id], 'method' => 'PUT', 'files' => true])}}
+            {{ Form::model($estate,['route' => ['estates.update', app()->getLocale(), $estate->id], 'method' => 'PUT', 'files' => true])}}
                 <!-- form header -->
                 <h3 class="d-flex flex-row justify-content-between">
                     <span>Edit estate: {{ $estate->address}}</span>

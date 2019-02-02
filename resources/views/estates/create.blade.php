@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-12 pt-2">
             <!-- form for estates -->
-            {{ Form::open(['route' => 'estates.store', 'method' => 'POST', 'files' => true])}}
+            {{ Form::open(['route' => ['estates.store', app()->getLocale()], 'method' => 'POST', 'files' => true])}}
                 <!-- form header -->
                 <h3 class="d-flex flex-row justify-content-between">
                     <span>New Estate</span>

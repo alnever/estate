@@ -9,7 +9,7 @@
             <!-- messages area -->
             @include('partials._messages')
             <!-- edit form be table -->
-            {{ Form::model($estateType, ['route' => ['estate-types.update', $estateType->id], 'method' => 'PUT']) }}
+            {{ Form::model($estateType, ['route' => ['estate-types.update', app()->getLocale(), $estateType->id], 'method' => 'PUT']) }}
                 {{ Form::label('name','Location name:')}}
                 {{ Form::text('name', null, ['class' => 'form-control', 'required']) }}
                 <div class="d-flex flex-row mt-2 justify-content-end">

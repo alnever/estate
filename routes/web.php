@@ -13,20 +13,29 @@
 
 
 // Front-end pages routes
-Route::get('/','PageController@getIndex')->name('pages.index');
-Route::get('/about','PageController@getAbout');
-Route::get('/contact','PageController@getContact');
-Route::redirect('/home', '/');
 
-Route::get('/estate/{estate}','PageController@getEstate')->name('estates.single');
+Route::group(['prefix' => '{lang?}', 'middleware' => 'lang'], function () {
+
+    Route::get('/','PageController@getIndex')->name('pages.index');
+    Route::get('/about','PageController@getAbout');
+    Route::get('/contact','PageController@getContact');
+
+    Route::get('/estate/{estate}','PageController@getEstate')->name('estates.single');
+
+});
 
 // Secured pages routes
-Route::group(['middleware' => 'auth'], function() {
+
+Route::group(['prefix' => '{lang?}', 'middleware' => ['lang','auth']], function() {
     Route::resource('/locations', 'LocationController');
     Route::resource('/estate-types', 'EstateTypeController');
     Route::resource('/estates','EstateController');
     Route::get('/estates/{estate}/restore','EstateController@restore')->name('estates.restore');
 });
+
+Route::permanentRedirect('/','/{lang}');
+
+
 
 // Authentication routes
 Auth::routes(['register' => false]);

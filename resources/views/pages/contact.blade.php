@@ -41,7 +41,7 @@
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Send message</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
                   </div>
 
                 </form>

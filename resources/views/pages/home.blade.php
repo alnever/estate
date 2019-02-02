@@ -19,7 +19,7 @@
         <div class="col-4">
             <div class="d-flex flex-column border border-light rounded bg-semi-light p-2">
                 <h3 class="text-light">Find your home</h3>
-                {{ Form::open(['route' => 'pages.index', 'method' => 'GET']) }}
+                {{ Form::open(['route' => ['pages.index', app()->getLocale()], 'method' => 'GET']) }}
                     <div class="mt-2">
                         {{ Form::label('goal','You are looking for:', ['class' => 'h4 text-white'])}}
                         {{ Form::select('goal',$goals,(isset($params['goal']) ? $params['goal'] : null), ['class' => 'form-control', 'placeholder' => 'Pick your goal...']) }}
@@ -62,7 +62,7 @@
                     <h3>{{ $estate->title }}</h3>
                     <p>{!! Str::words($estate->description, 30) !!}</p>
 
-                    <a href="{{ route('estates.single', $estate->id) }}" class="btn btn-primary float-right">Show more...</a>
+                    <a href="{{ route('estates.single', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary float-right">Show more...</a>
                 </div>
             @endforeach
         </div>

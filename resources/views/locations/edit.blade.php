@@ -9,7 +9,7 @@
             <!-- messages area -->
             @include('partials._messages')
             <!-- edit form be table -->
-            {{ Form::model($location, ['route' => ['locations.update', $location->id], 'method' => 'PUT']) }}
+            {{ Form::model($location, ['route' => ['locations.update', app()->getLocale(), $location->id], 'method' => 'PUT']) }}
                 {{ Form::label('name','Location name:')}}
                 {{ Form::text('name', null, ['class' => 'form-control', 'required']) }}
                 <div class="d-flex flex-row mt-2 justify-content-end">

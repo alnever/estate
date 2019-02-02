@@ -21,10 +21,10 @@
                             <td>{{ $estateType->id }}</td>
                             <td>{{ $estateType->name }}</td>
                             <td class="d-flex flex-row justify-content-end">
-                                <a href="{{ route('estate-types.edit', $estateType->id) }}" class="btn btn-primary btn-admin">
+                                <a href="{{ route('estate-types.edit', [app()->getLocale(), $estateType->id]) }}" class="btn btn-primary btn-admin">
                                     Edit
                                 </a>
-                                {{ Form::open(['route' => ['estate-types.destroy', $estateType->id], 'method' => 'DELETE']) }}
+                                {{ Form::open(['route' => ['estate-types.destroy', app()->getLocale(), $estateType->id], 'method' => 'DELETE']) }}
                                     {{ Form::submit('Delete', ['class' => 'btn btn-danger ml-2 btn-admin'])}}
                                 {{ Form::close() }}
                             </td>
@@ -38,7 +38,7 @@
             <!-- the form for adding a new location -->
             <div class="p-2 border border-secondary rounded">
                 <h3>New estate type</h3>
-                {{ Form::open(['route' => 'estate-types.store', 'method' => 'POST']) }}
+                {{ Form::open(['route' => ['estate-types.store', app()->getLocale()], 'method' => 'POST']) }}
                     {{ Form::label('name','Estate type:')}}
                     {{ Form::text('name', null, ['class' => 'form-control', 'required']) }}
                     {{ Form::submit('Save', ['class' => 'btn btn-success mt-2 btn-admin'])}}

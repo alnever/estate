@@ -47,7 +47,7 @@ class EstateTypeController extends Controller
 
         Session::flash('success','The estate type was created successfully.');
 
-        return redirect()->route('estate-types.index');
+        return redirect()->route('estate-types.index', app()->getLocale());
     }
 
     /**
@@ -93,7 +93,7 @@ class EstateTypeController extends Controller
 
         Session::flash('success','The estate type was updated successfully.');
 
-        return redirect()->route('estate-types.index');
+        return redirect()->route('estate-types.index', app()->getLocale());
     }
 
     /**
@@ -106,6 +106,6 @@ class EstateTypeController extends Controller
     {
         $estateType->delete();
         Session::flash('success','The estate type was deleted successfully.');
-        return redirect()->route('estate-types.index');
+        return redirect()->route('estate-types.index', app()->getLocale());
     }
 }
