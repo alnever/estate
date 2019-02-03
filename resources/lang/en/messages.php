@@ -29,6 +29,10 @@ return [
     'contact-motivation' => 'If you\'re interested in this estate, feel free to send a message to our realtors using the contact form below.',
     'contact-message' => 'Your message:',
 
+    // messages
+    'messages-success-added' => 'Your message was successfully sent.',
+    'messages-error-added' => 'There were some errors occured while message had been sent. Try later, please.',
+
 
 ];
 

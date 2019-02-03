@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             GoalSeeder::class,
             StageSeeder::class,
+            ReasonSeeder::class,
         ]);
     }
 }

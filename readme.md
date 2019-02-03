@@ -78,3 +78,7 @@ Localization:
 In addition:
 
 - Search forms handling was fixed.
+
+### 2019-02-03
+
+- AJAX form for messages was added on the estate's page.
