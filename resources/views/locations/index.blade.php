@@ -3,8 +3,8 @@
 @section('title', '| Locations')
 
 @section('content')
-    <div class="row">
-        <div class="col-9 pt-2">
+    <div class="dictionary-index">
+        <div class="dictionary-list pt-2">
             <h3>Locations</h3>
             <!-- messages area -->
             @include('partials._messages')
@@ -34,7 +34,7 @@
             </table>
         </div>
 
-        <div class="col-3 p-0">
+        <div class="dictionary-form p-0">
             <!-- the form for adding a new location -->
             <div class="p-2 border border-secondary rounded">
                 <h3>New location</h3>

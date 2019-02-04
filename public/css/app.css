@@ -10849,3 +10849,70 @@ table.estate-list tr.sold-estate {
   margin-right: 2em;
 }
 
+.estate-ad-into {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
+}
+
+.estate-ad-into .estate-image {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-ad-into .estate-image {
+    width: 33%;
+  }
+}
+
+.estate-ad-into .estate-description {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-ad-into .estate-description {
+    width: 67%;
+  }
+}
+
+/**
+* Styles for simple objects
+*/
+
+.dictionary-index {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .dictionary-index {
+    flex-direction: row;
+  }
+}
+
+.dictionary-index .dictionary-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .dictionary-index .dictionary-list {
+    width: 75%;
+  }
+}
+
+.dictionary-index .dictionary-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .dictionary-index .dictionary-form {
+    width: 25%;
+  }
+}
+

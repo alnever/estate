@@ -351,3 +351,37 @@ table.estate-list {
         }
     }
 }
+
+/**
+* Styles for simple objects
+*/
+
+.dictionary-index {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+
+    @include media-breakpoint-up(md){
+        flex-direction: row;
+    }
+
+    .dictionary-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            width: 75%;
+        }
+    }
+
+    .dictionary-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            width: 25%;
+        }
+    }
+}
