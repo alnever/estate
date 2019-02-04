@@ -23,6 +23,9 @@ input[type=checkbox] {
     max-height: 20px;
 }
 
+/*
+* Header styles
+*/
 .header {
     width: 100%;
     background-image:
@@ -66,10 +69,15 @@ input[type=checkbox] {
     }
 }
 
+/*
+* Styles for the estates list on the main/index page
+*/
 .content-area {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 100%;
+    padding: 0.2em;
 
     @include media-breakpoint-up(md) {
         flex-direction: row;
@@ -77,12 +85,12 @@ input[type=checkbox] {
 
 
     .estate-block {
-        @extend .col-4;
         width: 100%;
         height: auto;
 
         @include media-breakpoint-up(md) {
-            width: 100%;
+            width: 33%;
+        }
 
         .info-block {
             position: relative;
@@ -99,9 +107,35 @@ input[type=checkbox] {
                 height: 200px;
                 overflow: hidden;
             }
-
         }
+    }
+}
 
+/*
+* Styles for the estate information on the individual page of the estate
+*/
+
+.estate-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+    }
+
+    .estate-image {
+        width: 100%;
+        @include media-breakpoint-up(md) {
+            width: 50%;
+        }
+    }
+
+    .estate-description {
+        width: 100%;
+        @include media-breakpoint-up(md) {
+            width: 50%;
+        }
     }
 }
 

@@ -10506,6 +10506,10 @@ input[type=checkbox] {
   max-height: 20px;
 }
 
+/*
+* Header styles
+*/
+
 .header {
   width: 100%;
   background-image: linear-gradient(to bottom, #21212180, #ffffff00), url(/images/header.jpg?ad538b66848527974d1e38485236d879);
@@ -10555,10 +10559,16 @@ input[type=checkbox] {
   width: 100%;
 }
 
+/*
+* Styles for the estates list on the main/index page
+*/
+
 .content-area {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
+  padding: 0.2em;
 }
 
 @media (min-width: 768px) {
@@ -10567,15 +10577,15 @@ input[type=checkbox] {
   }
 }
 
-@media (min-width: 768px) {
-  .content-area .col-4 {
-    width: 100%;
-  }
-}
-
 .content-area .estate-block {
   width: 100%;
   height: auto;
+}
+
+@media (min-width: 768px) {
+  .content-area .estate-block {
+    width: 33%;
+  }
 }
 
 .content-area .estate-block .info-block {
@@ -10593,6 +10603,42 @@ input[type=checkbox] {
   width: 100%;
   height: 200px;
   overflow: hidden;
+}
+
+/*
+* Styles for the estate information on the individual page of the estate
+*/
+
+.estate-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-area {
+    flex-direction: row;
+  }
+}
+
+.estate-area .estate-image {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-area .estate-image {
+    width: 50%;
+  }
+}
+
+.estate-area .estate-description {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-area .estate-description {
+    width: 50%;
+  }
 }
 
 .bg-semi-light {

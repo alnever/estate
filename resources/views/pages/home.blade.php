@@ -47,7 +47,7 @@
 
     <!-- main body -->
     <div class="container mt-2">
-        <div class="row content-area">
+        <div class="content-area">
             @foreach ($estates as $estate)
                 <div class="estate-block p-2">
                     <!-- here must be estate picture -->

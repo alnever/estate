@@ -5,12 +5,12 @@
 @section('content')
     <!-- header -->
     <div class="header">
-      <div class="row">
-        <div class="col-8">
+      <div class="row header-content">
+        <div class="header-title">
             <h1 class="display-1 text-white">{{ __('messages.title') }}</h1>
             <h3 class="text-white">{{ __('messages.sub-title') }}</h3>
         </div>
-        <div class="col-4">
+        <div class="header-search-form">
             {{-- something --}}
         </div>
       </div>
@@ -41,7 +41,7 @@
                   </div>
 
                   <div class="form-group">
-                    <button type="button" class="btn btn-primary">{{ __('messages.send') }}</button>
+                    <button type="button" class="btn btn-primary btn-block">{{ __('messages.send') }}</button>
                   </div>
 
                 </form>

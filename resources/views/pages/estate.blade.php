@@ -5,12 +5,12 @@
 @section('content')
     <!-- header -->
     <div class="header">
-      <div class="row">
-        <div class="col-8">
+      <div class="row header-content">
+        <div class="header-title">
             <h1 class="display-1 text-white">{{ __('messages.title') }}</h1>
             <h3 class="text-white">{{ __('messages.sub-title') }}</h3>
         </div>
-        <div class="col-4">
+        <div class="header-search-form">
             <div class="d-flex flex-column border border-light rounded bg-semi-light m-2 p-2">
                 <h3 class="text-light">{{ __('messages.contact-realtor') }}</h3>
                 <p class="text-white message-response">{{ __('messages.contact-motivation') }}</p>
@@ -34,11 +34,11 @@
 
     <!-- main body -->
     <div class="container mt-2">
-        <div class="row">
-            <div class="col-6">
+        <div class="estate-area">
+            <div class="estate-image">
                 <img src="{{ asset('uploads/images/' . $estate->main_image) }}" class="info-image"/>
             </div>
-            <div class="col-6">
+            <div class="estate-description">
                 <h2>{{ $estate->title }}</h2>
                 <h3>
                     @foreach ($estate->locations as $location)
