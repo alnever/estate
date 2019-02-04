@@ -19,9 +19,19 @@
     }
 }
 
-input[type=checkbox] {
-    max-height: 20px;
+.bg-semi-light {
+    background-color: #88888888;
 }
+
+.bg-light-grey {
+    background-color: #ababab88;
+}
+
+.info-image {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /*
 * Header styles
@@ -139,16 +149,205 @@ input[type=checkbox] {
     }
 }
 
+/**
+* Styles for a search form in the admin panel
+*/
 
-.bg-semi-light {
-    background-color: #88888888;
+.search-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.2em;
+    border: 1px solid $secondary;
+    border-radius: 0.2em;
+
+    .block-1 {
+        display: flex;
+        flex-direction: column;
+        padding: 0.2em;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .element-group {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 0.2em;
+
+            @include media-breakpoint-up(md) {
+                width: auto;
+            }
+
+            .element-with-label {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                width: auto;
+
+                label {
+                    margin-right: 1em;
+                }
+
+                input[type=checkbox] {
+                    max-height: 2em;
+                    margin-right: 2em;
+                }
+
+                .form-control {
+                    width: auto;
+                }
+            }
+        }
+    }
 }
 
-.bg-light-grey {
-    background-color: #ababab88;
-}
+/*
+* Styles for the estates list in the admin panel
+*/
 
-.info-image {
+table.estate-list {
     max-width: 100%;
-    height: auto;
+
+    thead {
+        display: none;
+
+        @include media-breakpoint-up(md) {
+            display: table-caption;
+        }
+    }
+
+    tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-top: 1px solid $secondary;
+
+        @include media-breakpoint-up(md) {
+            display: table-row;
+            border: none;
+        }
+
+        &:nth-child(even) {
+            background-color: $light;
+        }
+
+        &:nth-child(odd) {
+            background-color: $gray-400;
+        }
+
+        td {
+            border: none;
+            width: 100%;
+
+            @include media-breakpoint-up(md) {
+                width: auto;
+                border-top: 1px solid $light;
+            }
+
+            .estate-label-optional {
+                display: inline ;
+
+                @include media-breakpoint-up(md) {
+                    display: none;
+                }
+            }
+        }
+
+
+        td.estate-display-optional {
+            display: none;
+            @include media-breakpoint-up(md) {
+                display: table-cell;
+            }
+        }
+    }
+
+    tr.new-estate {
+        background-color: #D4E6F1;
+    }
+
+    tr.estate-in-process {
+        background-color: #FEF9E7;
+    }
+
+    tr.sold-estate {
+        background-color: #D5F5E3;
+    }
+}
+
+/*
+* Styles for estate view
+*/
+
+.estate-show-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include media-breakpoint-up(md){
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    & > * {
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            width: auto;
+        };
+    }
+}
+
+.estate-show-parameters {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    & > div {
+        display: flex;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            width: 33%;
+        }
+
+        & > *:first-child {
+            margin-right: 2em;
+        }
+    }
+}
+
+.estate-ad-into {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media-breakpoint-up(ms) {
+        flex-direction: row;
+    }
+
+    .estate-image {
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            width: 33%;
+        }
+    }
+
+    .estate-description {
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            width: 67%;
+        }
+    }
 }

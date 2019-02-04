@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Roboto", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -5980,7 +5980,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6105,7 +6105,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10502,8 +10502,17 @@ a.text-dark:focus {
   }
 }
 
-input[type=checkbox] {
-  max-height: 20px;
+.bg-semi-light {
+  background-color: #88888888;
+}
+
+.bg-light-grey {
+  background-color: #ababab88;
+}
+
+.info-image {
+  max-width: 100%;
+  height: auto;
 }
 
 /*
@@ -10641,16 +10650,202 @@ input[type=checkbox] {
   }
 }
 
-.bg-semi-light {
-  background-color: #88888888;
+/**
+* Styles for a search form in the admin panel
+*/
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.2em;
+  border: 1px solid #6c757d;
+  border-radius: 0.2em;
 }
 
-.bg-light-grey {
-  background-color: #ababab88;
+.search-form .block-1 {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2em;
 }
 
-.info-image {
+@media (min-width: 768px) {
+  .search-form .block-1 {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.search-form .block-1 .element-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0.2em;
+}
+
+@media (min-width: 768px) {
+  .search-form .block-1 .element-group {
+    width: auto;
+  }
+}
+
+.search-form .block-1 .element-group .element-with-label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: auto;
+}
+
+.search-form .block-1 .element-group .element-with-label label {
+  margin-right: 1em;
+}
+
+.search-form .block-1 .element-group .element-with-label input[type=checkbox] {
+  max-height: 2em;
+  margin-right: 2em;
+}
+
+.search-form .block-1 .element-group .element-with-label .form-control {
+  width: auto;
+}
+
+/*
+* Styles for the estates list in the admin panel
+*/
+
+table.estate-list {
   max-width: 100%;
-  height: auto;
+}
+
+table.estate-list thead {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  table.estate-list thead {
+    display: table-caption;
+  }
+}
+
+table.estate-list tr {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top: 1px solid #6c757d;
+}
+
+@media (min-width: 768px) {
+  table.estate-list tr {
+    display: table-row;
+    border: none;
+  }
+}
+
+table.estate-list tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+table.estate-list tr:nth-child(odd) {
+  background-color: #ced4da;
+}
+
+table.estate-list tr td {
+  border: none;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  table.estate-list tr td {
+    width: auto;
+    border-top: 1px solid #f8f9fa;
+  }
+}
+
+table.estate-list tr td .estate-label-optional {
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  table.estate-list tr td .estate-label-optional {
+    display: none;
+  }
+}
+
+table.estate-list tr td.estate-display-optional {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  table.estate-list tr td.estate-display-optional {
+    display: table-cell;
+  }
+}
+
+table.estate-list tr.new-estate {
+  background-color: #D4E6F1;
+}
+
+table.estate-list tr.estate-in-process {
+  background-color: #FEF9E7;
+}
+
+table.estate-list tr.sold-estate {
+  background-color: #D5F5E3;
+}
+
+/*
+* Styles for estate view
+*/
+
+.estate-show-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .estate-show-header {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
+
+.estate-show-header > * {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-show-header > * {
+    width: auto;
+  }
+}
+
+.estate-show-parameters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-show-parameters {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.estate-show-parameters > div {
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .estate-show-parameters > div {
+    width: 33%;
+  }
+}
+
+.estate-show-parameters > div > *:first-child {
+  margin-right: 2em;
 }
 

@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-12 pt-2">
             <!-- form header -->
-            <h3 class="d-flex flex-row justify-content-between">
+            <h3 class="estate-show-header">
                 <span>Estate: {{ $estate->address }}</span>
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row justify-content-end">
                     <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
                     {{ Form::open(['route' => ['estates.destroy', app()->getLocale(), $estate->id], 'method' => 'DELETE']) }}
                         {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
@@ -22,16 +22,16 @@
             @include('partials._messages')
 
             <!-- form body -->
-            <div class="row d-flex flex-row mt-2 justify-content-between">
-                <div class="col-4 d-flex flex-row align-items-center">
-                    Goal:<strong>{{ $estate->goal->name }}</strong>
+            <div class="estate-show-parameters p-2 m-1 mt-2 border border-info rounded">
+                <div>
+                    <span>Goal:</span> <strong>{{ $estate->goal->name }}</strong>
                 </div>
-                <div class="col-4 d-flex flex-row align-items-center">
-                    Estate type: <strong>{{ $estate->estateType->name }}</strong>
+                <div>
+                    <span>Estate type:</span> <strong>{{ $estate->estateType->name }}</strong>
                 </div>
-                <div class="col-4 d-flex flex-row align-items-center">
+                <div>
                     @if ($estate->realtor)
-                        Realtor: <strong>{{ $estate->realtor->name }}</strong>
+                        <span>Realtor:</span> <strong>{{ $estate->realtor->name }}</strong>
                     @endif
                 </div>
             </div>
@@ -45,41 +45,41 @@
                     @endforeach
                 </h4>
 
-                <div class="row d-flex flex-row mt-2">
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        Rooms: <strong>{{ $estate->rooms }}</strong>
+                <div class="estate-show-parameters mt-2">
+                    <div>
+                        <span>Rooms:</span> <strong>{{ $estate->rooms }}</strong>
                     </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        Sqiare: <strong>{{ $estate->square }}</strong>
+                    <div>
+                        <span>Sqiare:</span> <strong>{{ $estate->square }}</strong>
                     </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        Floor: <strong>{{ $estate->floor }}</strong>
+                    <div>
+                        <span>Floor:</span> <strong>{{ $estate->floor }}</strong>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 d-flex flex-column p-2 justify-content-between m-1 mt-2 border border-danger rounded">
                 <h4>Prices:</h4>
-                <div class="row d-flex flex-row p-2 justify-content-between m-1 mt-2 font-weight-bold">
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        Price: <strong class="text-primary">{{ $estate->price }}</strong>
+                <div class="estate-show-parameters p-2 m-1 mt-2 font-weight-bold">
+                    <div>
+                        <span>Price:</span> <strong class="text-primary">{{ $estate->price }}</strong>
                     </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        Minimal Price: <strong class="text-danger">{{ $estate->min_price }}</strong>
+                    <div>
+                        <span>Minimal Price:</span> <strong class="text-danger">{{ $estate->min_price }}</strong>
                     </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
-                        Final Price: <strong class="text-success">{{ $estate->final_price }}</strong>
+                    <div>
+                        <span>Final Price:</span> <strong class="text-success">{{ $estate->final_price }}</strong>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded">
                 <h4>Advertisment information:</h4>
-                <div class="d-flex flex-row">
-                    <div class="col-4">
+                <div class="estate-ad-info">
+                    <div class="estate-image">
                         <img src="{{ asset('uploads/images/' . $estate->main_image) }}" alt="" class='info-image'>
                     </div>
-                    <div class="col-8">
+                    <div class="estate-description">
                         <h5>{{ $estate->title }}</h5>
                         <p>
                             {!! $estate->description !!}

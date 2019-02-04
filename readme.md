@@ -88,3 +88,4 @@ In addition:
 Fix day :)
 
 - Fix SASS to make all elements of design responsive.
+- Fix SASS for admin panel: estates list, estate view etc.
