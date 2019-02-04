@@ -82,3 +82,9 @@ In addition:
 ### 2019-02-03
 
 - AJAX form for messages was added on the estate's page.
+
+### 2019-02-04
+
+Fix day :)
+
+- Fix SASS to make all elements of design responsive.

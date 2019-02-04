@@ -10,13 +10,13 @@
 @section('content')
 
     <!-- header -->
-    <div class="header container-fluid">
-      <div class="col-12 d-flex flex-row">
-        <div class="col-8">
+    <div class="header">
+      <div class="row header-content">
+        <div class="header-title">
             <h1 class="display-1 text-white">{{ __('messages.title') }}</h1>
             <h3 class="text-white">{{ __('messages.sub-title') }}</h3>
         </div>
-        <div class="col-4">
+        <div class="header-search-form">
             <div class="d-flex flex-column border border-light rounded bg-semi-light p-2">
                 <h3 class="text-light">
                     {{ __('messages.form-title') }}
@@ -28,7 +28,7 @@
                     </div>
                     <div class=mt-2>
                         {{ Form::label('locations',__('messages.form-locations'), ['class' => 'h4 text-white']) }}
-                        {{ Form::select('locations[]',$locations,(isset($params['locations']) ? $params['locations'] : null), ['class' => 'form-control locations-select', 'multiple' => 'multiple']) }}
+                        {{ Form::select('locations[]',$locations,(isset($params['locations']) ? $params['locations'] : null), ['class' => 'form-control select2 locations-select', 'multiple' => 'multiple']) }}
                     </div>
                     <div class="mt-2">
                         {{ Form::label('min_price',__('messages.form-min-price'), ['class' => 'h4 text-white'])}}
@@ -47,9 +47,9 @@
 
     <!-- main body -->
     <div class="container mt-2">
-        <div class="row">
+        <div class="row content-area">
             @foreach ($estates as $estate)
-                <div class="col-4 p-2 estate-block">
+                <div class="estate-block p-2">
                     <!-- here must be estate picture -->
                     <div class="d-block info-block">
                         <div class="image-crop">

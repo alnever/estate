@@ -10515,6 +10515,86 @@ input[type=checkbox] {
   padding: 20px;
 }
 
+.header .header-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .header .header-content {
+    flex-direction: row;
+  }
+}
+
+.header .header-content .header-title {
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .header .header-content .header-title {
+    width: 67%;
+  }
+}
+
+.header .header-content .header-search-form {
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .header .header-content .header-search-form {
+    width: 33%;
+  }
+}
+
+.header .header-content .header-search-form form {
+  width: 100%;
+}
+
+.header .header-content .header-search-form form .select2 {
+  width: 100%;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .content-area {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-area .col-4 {
+    width: 100%;
+  }
+}
+
+.content-area .estate-block {
+  width: 100%;
+  height: auto;
+}
+
+.content-area .estate-block .info-block {
+  position: relative;
+  width: 100%;
+}
+
+.content-area .estate-block .info-block .info {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.content-area .estate-block .info-block .image-crop {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
 .bg-semi-light {
   background-color: #88888888;
 }
@@ -10523,29 +10603,8 @@ input[type=checkbox] {
   background-color: #ababab88;
 }
 
-.estate-block {
-  height: auto;
-}
-
 .info-image {
   max-width: 100%;
   height: auto;
-}
-
-.info-block {
-  position: relative;
-  width: 100%;
-}
-
-.info-block .info {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-}
-
-.info-block .image-crop {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
 }
 
