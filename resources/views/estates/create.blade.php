@@ -37,16 +37,16 @@
                 @include('partials._messages')
 
                 <!-- form body -->
-                <div class="row d-flex flex-row mt-2 justify-content-between">
-                    <div class="col-4 d-flex flex-row align-items-center">
+                <div class="info-block">
+                    <div class="info-element-3">
                         {{ Form::label('goal_id','Goal:',['class' => 'mt-2 text-nowrap']) }}
                         {{ Form::select('goal_id', $goals, null, ['class' => 'form-control', 'required', 'placeholder' => 'Pick a goal...']) }}
                     </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
+                    <div class="info-element-3">
                         {{ Form::label('estate_type_id','Estate type:',['class' => 'mt-2 text-nowrap']) }}
                         {{ Form::select('estate_type_id', $estateTypes, null, ['class' => 'form-control', 'required', 'placeholder' => 'Pick an estate type...']) }}
                     </div>
-                    <div class="col-4 d-flex flex-row align-items-center">
+                    <div class="info-element-3">
                         {{ Form::label('realtor_id','Realtor:',['class' => 'mt-2 text-nowrap']) }}
                         {{ Form::select('realtor_id', $realtors, 0, ['class' => 'form-control', 'placeholder' => 'Choose a realtor...']) }}
                     </div>
@@ -59,31 +59,59 @@
 
                     {{ Form::label('address','Address:',['class' => 'mt-2']) }}
                     {{ Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter an address...'])}}
-                    <div class="row d-flex flex-row mt-2">
-                        <div class="col-4 d-flex flex-row align-items-center">
+                    <div class="info-block">
+                        <div class="info-element-2">
                             {{ Form::label('rooms','Rooms:') }}
                             {{ Form::text('rooms', 0, ['class' => 'form-control', 'placeholder' => 'Enter number of rooms...'])}}
                         </div>
-                        <div class="col-4 d-flex flex-row align-items-center">
-                            {{ Form::label('square','Square:') }}
-                            {{ Form::text('square', 0, ['class' => 'form-control', 'placeholder' => 'Enter a square...'])}}
-                        </div>
-                        <div class="col-4 d-flex flex-row align-items-center">
+                        <div class="info-element-2">
                             {{ Form::label('floor','Floor:') }}
                             {{ Form::text('floor', 0, ['class' => 'form-control', 'placeholder' => 'Enter a floor number...'])}}
                         </div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-element-3">
+                            {{ Form::label('total_square','Total Square:') }}
+                            {{ Form::text('total_square', 0, ['class' => 'form-control', 'placeholder' => 'Enter the total square...'])}}
+                        </div>
+                        <div class="info-element-3">
+                            {{ Form::label('living_square','Living Square:') }}
+                            {{ Form::text('living_square', 0, ['class' => 'form-control', 'placeholder' => 'Enter the living square...'])}}
+                        </div>
+                        <div class="info-element-3">
+                            {{ Form::label('kitchen_square','Kitchen Square:') }}
+                            {{ Form::text('kitchen_square', 0, ['class' => 'form-control', 'placeholder' => 'Enter the square of the kitchen...'])}}
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-element-3">
+                            {{ Form::label('bathroom','Bathroom:') }}
+                            {{ Form::text('bathroom', null, ['class' => 'form-control', 'placeholder' => 'About a bathroom...'])}}
+                        </div>
+                        <div class="info-element-3">
+                            {{ Form::label('balcony','Balcony:') }}
+                            {{ Form::text('balcony', null, ['class' => 'form-control', 'placeholder' => 'About a balcony...'])}}
+                        </div>
+                        <div class="info-element-3">
+                            {{ Form::label('loggia','Loggia:') }}
+                            {{ Form::text('loggia', null, ['class' => 'form-control', 'placeholder' => 'About a loggia...'])}}
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex flex-column mt-2">
+                        {{ Form::label('condition','Estate Condition:',['class' => 'mt-2']) }}
+                        {{ Form::textarea('condition', null, ['class' => 'form-control', 'rows' => 5])}}
                     </div>
                 </div>
 
 
                 <div class="col-12 d-flex flex-column p-2 justify-content-between m-1 mt-2 border border-danger rounded font-weight-bold">
                     <h4>Enter the information about prices:</h4>
-                    <div class="row d-flex flex-row mt-2">
-                        <div class="col-5 d-flex flex-row align-items-center">
+                    <div class="info-block">
+                        <div class="info-element-2">
                             {{ Form::label('price','Price:') }}
                             {{ Form::text('price', 0, ['class' => 'form-control text-primary font-weight-bold', 'placeholder' => 'Enter a wanted price...'])}}
                         </div>
-                        <div class="col-5 d-flex flex-row align-items-center">
+                        <div class="info-element-2">
                             {{ Form::label('min_price','Minimal price:', ['class' => 'text-nowrap']) }}
                             {{ Form::text('min_price', 0, ['class' => 'form-control text-danger font-weight-bold', 'placeholder' => 'Enter a possibly minimal price...'])}}
                         </div>

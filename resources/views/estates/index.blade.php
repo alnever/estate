@@ -33,10 +33,6 @@
                         <div class="element-group">
                             <h5 class="text-primary m-0 mr-2">Estates status:</h5>
                             <div class="element-with-label">
-                                {{ Form::label('published','New',['class'=>'form-check-label']) }}
-                                {{ Form::checkbox('published',1, (isset($params['published']) ? $params['published'] : 1), ['class' => 'form-control']) }}
-                            </div>
-                            <div class="element-with-label">
                                 {{ Form::label('process','In process',['class'=>'form-check-label']) }}
                                 {{ Form::checkbox('process',1, (isset($params['process']) ? $params['process'] : 1), ['class' => 'form-control']) }}
                             </div>

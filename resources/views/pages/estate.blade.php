@@ -38,17 +38,29 @@
             <div class="estate-image">
                 <img src="{{ asset('uploads/images/' . $estate->main_image) }}" class="info-image"/>
             </div>
-            <div class="estate-description">
+            <div class="estate-properties">
                 <h2>{{ $estate->title }}</h2>
                 <h3>
                     @foreach ($estate->locations as $location)
                         <span class="badge badge-secondary">{{ $location->name }}</span>
                     @endforeach
                 </h3>
-                <p>
-                    {!! $estate->description !!}
-                </p>
+                <div class="property">
+                    <span class="property-title">{{ __('messages.total-square') }}</span>
+                    <span class="property-value">{{ $estate->total_square }}</span>
+                </div>
+                <div class="property">
+                    <span class="property-title">{{ __('messages.living-square') }}</span>
+                    <span class="property-value">{{ $estate->living_square }}</span>
+                </div>
+                <div class="property">
+                    <span class="property-title">{{ __('messages.living-square') }}</span>
+                    <span class="property-value">{{ $estate->living_square }}</span>
+                </div>
             </div>
+        </div>
+        <div class="estate-description">
+            {!! $estate->description !!}
         </div>
     </div>
 

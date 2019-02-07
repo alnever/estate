@@ -89,3 +89,12 @@ Fix day :)
 
 - Fix SASS to make all elements of design responsive.
 - Fix SASS for admin panel: estates list, estate view etc.
+
+### 2019-02-07
+
+After a conversation with a realtor:
+
+- The structure of the database and the migrations were revised.
+- As a consequence, the UI elements were changed.
+
+TODO:: add a new information onto the front-end.

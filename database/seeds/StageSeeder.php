@@ -12,9 +12,8 @@ class StageSeeder extends Seeder
     public function run()
     {
         DB::table('stages')->insert([
-            ['id' => 1, 'name' => 'published'],
-            ['id' => 2, 'name' => 'in process'],
-            ['id' => 3, 'name' => 'sold'],
+            ['id' => 0, 'name' => 'process'],
+            ['id' => 1, 'name' => 'sold'],
         ]);
     }
 }

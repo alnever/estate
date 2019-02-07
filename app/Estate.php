@@ -15,26 +15,38 @@ class Estate extends Model
         'estate_type_id',
         'goal_id',
         'stage_id',
+        'realtor_id',
+
+        'title',
+        'description',
+
         'address',
         'rooms',
         'floor',
-        'square',
-        'object_info',
+
+        'total_square',
+        'living_square',
+        'kitchen_square',
+        
+        'bathroom',
+        'balcony',
+        'loggia',
+        'condition',
+
         'price',
         'min_price',
-        'owner_info',
-        'publisher_id',
-        'published_at',
-        'realtor_id',
-        'process_at',
-        'sold_at',
         'final_price',
+
+        'object_info',
+        'owner_info',
         'final_info',
+
+        'publisher_id',
+
+        'sold_at',
         'created_at',
         'updated_at',
         'deleted_at',
-        'title',
-        'description',
     ];
 
     /**

@@ -141,12 +141,33 @@
         }
     }
 
-    .estate-description {
+    .estate-properties {
+        display: flex;
+        flex-direction: column;
         width: 100%;
+        padding-right: 2em;
+        padding-left: 2em;
+
+
         @include media-breakpoint-up(md) {
             width: 50%;
         }
+
+        .property {
+            .property-title {
+
+            }
+
+            .property-value {
+
+            }
+        }
     }
+}
+
+.estate-description {
+    display: flex;
+    flex-direction: column;;
 }
 
 /**
@@ -382,6 +403,42 @@ table.estate-list {
 
         @include media-breakpoint-up(md) {
             width: 25%;
+        }
+    }
+}
+
+/**
+* Styles for estate create and edit form
+*/
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media-breakpoint-up(md){
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .info-element {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+    }
+
+    .info-element-2 {
+        @extend .info-element;
+        @include media-breakpoint-up(md) {
+            width: 50%;
+        }
+    }
+
+    .info-element-3 {
+        @extend .info-element;
+        @include media-breakpoint-up(md) {
+            width: 33%;
         }
     }
 }

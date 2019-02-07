@@ -52,16 +52,13 @@ class EstateController extends Controller
             $params['rent'] = (isset($params['rent']) ? $params['rent'] : 0);
 
             // select by stage
-            if (!isset($params['published'])) {
-                $estates = $estates->where('stage_id','!=',1);
-            }
             if (!isset($params['process'])) {
                 $estates = $estates->where('stage_id','!=',2);
             }
             if (!isset($params['sold'])) {
                 $estates = $estates->where('stage_id','!=',3);
             }
-            $params['published'] = isset($params['published']) ? $params['published'] : 0;
+
             $params['process'] = isset($params['process']) ? $params['process'] : 0;
             $params['sold'] = isset($params['sold']) ? $params['sold'] : 0;
 
@@ -90,7 +87,6 @@ class EstateController extends Controller
             // set default values for search params
             $params['sell'] = 1;
             $params['rent'] = 1;
-            $params['published'] = 1;
             $params['process'] = 1;
             $params['sold'] = 1;
             $params['deleted'] = 0;
@@ -171,9 +167,14 @@ class EstateController extends Controller
             'goal_id' => ['required'],
             'address' => ['required','max:255'],
             'rooms' => ['integer','nullable'],
-            'square' => ['numeric','nullable'],
+
+            'total_square' => ['numeric','nullable'],
+            'living_square' => ['numeric','nullable'],
+            'kitchen_square' => ['numeric','nullable'],
+
             'price' => ['required', 'numeric'],
             'min_price' => ['numeric','nullable'],
+
             'realtor_id' => ['integer','nullable'],
             'title' => ['max:255','required'],
         ]);
@@ -181,19 +182,12 @@ class EstateController extends Controller
         // create estate with the given information
         $estate = new Estate($request->all());
 
-        // in addition: pusblishing parameters
-        $estate->published_at = date('Y-m-d H:i:s');
         $estate->publisher_id = Auth::user()->id;
-
-        // in addition: set realtor and stage
-        if ($request->realtor_id && $request->realtor_id != 0) {
-            $estate->stage_id = 2; // realtor is set - the estate is in process
-            $estate->process_at = date('Y-m-d H:i:s');
-        } else {
-            $estate->stage_id = 1; // just published estate
-        }
+        $estate->stage_id = 0;
 
         // purify
+        $estate->description = Purifier::clean($estate->description);
+        $estate->condition = Purifier::clean($estate->condition);
         $estate->object_info = Purifier::clean($estate->object_info);
         $estate->owner_info  = Purifier::clean($estate->owner_info);
         $estate->final_info  = Purifier::clean($estate->final_info);
@@ -288,10 +282,15 @@ class EstateController extends Controller
             'goal_id' => ['required'],
             'address' => ['required','max:255'],
             'rooms' => ['integer','nullable'],
-            'square' => ['numeric','nullable'],
+
+            'total_square' => ['numeric','nullable'],
+            'living_square' => ['numeric','nullable'],
+            'kitchen_square' => ['numeric','nullable'],
+
             'price' => ['required', 'numeric'],
             'min_price' => ['numeric','nullable'],
             'final_price' => ['numeric','nullable'],
+
             'realtor_id' => ['integer','nullable'],
             'title' => ['max:255','required'],
         ]);
@@ -305,11 +304,13 @@ class EstateController extends Controller
         $estate->update($request->all());
 
         if ($request->final_price && $request->final_price != 0) {
-            $estate->stage_id = 3;
+            $estate->stage_id = 1;
             $estate->sold_at = date('Y-m-d H:i:s');
         }
 
         // purify
+        $estate->description = Purifier::clean($estate->description);
+        $estate->condition = Purifier::clean($estate->condition);
         $estate->object_info = Purifier::clean($estate->object_info);
         $estate->owner_info  = Purifier::clean($estate->owner_info);
         $estate->final_info  = Purifier::clean($estate->final_info);

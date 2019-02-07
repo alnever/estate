@@ -10640,14 +10640,23 @@ a.text-dark:focus {
   }
 }
 
-.estate-area .estate-description {
+.estate-area .estate-properties {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  padding-right: 2em;
+  padding-left: 2em;
 }
 
 @media (min-width: 768px) {
-  .estate-area .estate-description {
+  .estate-area .estate-properties {
     width: 50%;
   }
+}
+
+.estate-description {
+  display: flex;
+  flex-direction: column;
 }
 
 /**
@@ -10913,6 +10922,44 @@ table.estate-list tr.sold-estate {
 @media (min-width: 768px) {
   .dictionary-index .dictionary-form {
     width: 25%;
+  }
+}
+
+/**
+* Styles for estate create and edit form
+*/
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .info-block {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.info-block .info-element,
+.info-block .info-element-3,
+.info-block .info-element-2 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .info-block .info-element-2 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .info-block .info-element-3 {
+    width: 33%;
   }
 }
 

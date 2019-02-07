@@ -50,11 +50,36 @@
                         <span>Rooms:</span> <strong>{{ $estate->rooms }}</strong>
                     </div>
                     <div>
-                        <span>Sqiare:</span> <strong>{{ $estate->square }}</strong>
-                    </div>
-                    <div>
                         <span>Floor:</span> <strong>{{ $estate->floor }}</strong>
                     </div>
+                </div>
+                <div class="estate-show-parameters mt-2">
+                    <div>
+                        <span>Total Square:</span> <strong>{{ $estate->total_square }}</strong>
+                    </div>
+                    <div>
+                        <span>Living Square:</span> <strong>{{ $estate->living_square }}</strong>
+                    </div>
+                    <div>
+                        <span>Kitchen Square:</span> <strong>{{ $estate->kitchen_square }}</strong>
+                    </div>
+                </div>
+                <div class="estate-show-parameters mt-2">
+                    <div>
+                        <span>Bathroom:</span> <strong>{{ $estate->bathroom }}</strong>
+                    </div>
+                    <div>
+                        <span>Balcony:</span> <strong>{{ $estate->balcony }}</strong>
+                    </div>
+                    <div>
+                        <span>Loggia:</span> <strong>{{ $estate->loggia }}</strong>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mt-2">
+                    <strong>Estate Conditions:</strong>
+                    <p>
+                        {!! $estate->condition !!}
+                    </p>
                 </div>
             </div>
 

@@ -17,24 +17,36 @@ class CreateEstatesTable extends Migration
             $table->increments('id');
             $table->integer('estate_type_id')->unsigned();
             $table->integer('goal_id')->unsigned();
-            $table->integer('stage_id')->unsigned()->default(1);
+            $table->integer('stage_id')->unsigned()->default(0);
+            $table->integer('realtor_id')->nullable();
+            // frontend information
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('main_image')->nullable();
             // object information
             $table->string('address')->nullable();
             $table->integer('rooms')->nullable();
-            $table->integer('floor')->nullable();
-            $table->text('object_info')->nullable();
+            $table->string('floor')->nullable();
+            // square information
+            $table->decimal('total_square',12,2)->default(0);
+            $table->decimal('living_square',12,2)->default(0);
+            $table->decimal('kitchen_square',12,2)->default(0);
+            // facilities
+            $table->string('bathroom')->nullable();
+            $table->string('balcony')->nullable();
+            $table->string('loggia')->nullable();
+            $table->text('condition')->nullable();
             // owner information
             $table->decimal('price',12,2)->default(0);
             $table->decimal('min_price',12,2)->default(0);
+            $table->decimal('final_price',12,2)->default(0);
+            // comments
+            $table->text('object_info')->nullable();
+            $table->text('final_info')->nullable();
             $table->text('owner_info')->nullable();
             // stage info
             $table->integer('publisher_id')->nullable();
-            $table->timestamp('published_at')->nullable();
-            $table->integer('realtor_id')->nullable();
-            $table->timestamp('process_at')->nullable();
             $table->timestamp('sold_at')->nullable();
-            $table->decimal('final_price',12,2)->default(0);
-            $table->text('final_info')->nullable();
             //foreign keys
             $table->foreign('estate_type_id')->references('id')->on('estate_types');
             $table->foreign('goal_id')->references('id')->on('goals');
@@ -42,6 +54,7 @@ class CreateEstatesTable extends Migration
             $table->foreign('publisher_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('realtor_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
