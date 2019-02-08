@@ -98,3 +98,7 @@ After a conversation with a realtor:
 - As a consequence, the UI elements were changed.
 
 TODO:: add a new information onto the front-end.
+
+### 2019-02-07
+
+- The new estate parameters were added in front-end pages.
