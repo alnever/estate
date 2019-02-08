@@ -7,13 +7,13 @@
         <div class="col-12 pt-2">
             <!-- form header -->
             <h3 class="estate-show-header">
-                <span>Estate: {{ $estate->address }}</span>
+                <span>{{ __('messages.estate') }} {{ $estate->address }}</span>
                 <div class="d-flex flex-row justify-content-end">
-                    <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
+                    <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">{{ __('messages.edit') }}</a>
                     {{ Form::open(['route' => ['estates.destroy', app()->getLocale(), $estate->id], 'method' => 'DELETE']) }}
-                        {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
+                        {{ Form::submit(__('messages.delete'),['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
-                    <a href="{{ route('estates.index', app()->getLocale()) }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
+                    <a href="{{ route('estates.index', app()->getLocale()) }}" class="btn btn-warning ml-2 btn-admin">{{ __('messages.back') }}</a>
                 </div>
             </h3>
             <!-- end of form header -->
@@ -24,21 +24,21 @@
             <!-- form body -->
             <div class="estate-show-parameters p-2 m-1 mt-2 border border-info rounded">
                 <div>
-                    <span>Goal:</span> <strong>{{ $estate->goal->name }}</strong>
+                    <span>{{ __('messages.goal') }}</span> <strong>{{ __('messages.'.$estate->goal->name) }}</strong>
                 </div>
                 <div>
-                    <span>Estate type:</span> <strong>{{ $estate->estateType->name }}</strong>
+                    <span>{{ __('messages.estate-type') }}</span> <strong>{{ $estate->estateType->name }}</strong>
                 </div>
                 <div>
                     @if ($estate->realtor)
-                        <span>Realtor:</span> <strong>{{ $estate->realtor->name }}</strong>
+                        <span>{{ __('messages.realtor') }}</span> <strong>{{ $estate->realtor->name }}</strong>
                     @endif
                 </div>
             </div>
 
             <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded">
-                <h4>Identication:</h4>
-                <strong>Locations:</strong>
+                <h4>{{ __('messages.identification') }}</h4>
+                <strong>{{ __('messages.locations') }}</strong>
                 <h4>
                     @foreach ($estate->locations as $location)
                         <span class=" badge badge-secondary">{{ $location->name }}</span>
@@ -47,36 +47,36 @@
 
                 <div class="estate-show-parameters mt-2">
                     <div>
-                        <span>Rooms:</span> <strong>{{ $estate->rooms }}</strong>
+                        <span>{{ __('messages.rooms') }}</span> <strong>{{ $estate->rooms }}</strong>
                     </div>
                     <div>
-                        <span>Floor:</span> <strong>{{ $estate->floor }}</strong>
-                    </div>
-                </div>
-                <div class="estate-show-parameters mt-2">
-                    <div>
-                        <span>Total Square:</span> <strong>{{ $estate->total_square }}</strong>
-                    </div>
-                    <div>
-                        <span>Living Square:</span> <strong>{{ $estate->living_square }}</strong>
-                    </div>
-                    <div>
-                        <span>Kitchen Square:</span> <strong>{{ $estate->kitchen_square }}</strong>
+                        <span>{{ __('messages.floor') }}</span> <strong>{{ $estate->floor }}</strong>
                     </div>
                 </div>
                 <div class="estate-show-parameters mt-2">
                     <div>
-                        <span>Bathroom:</span> <strong>{{ $estate->bathroom }}</strong>
+                        <span>{{ __('messages.total-square') }}</span> <strong>{{ $estate->total_square }}</strong>
                     </div>
                     <div>
-                        <span>Balcony:</span> <strong>{{ $estate->balcony }}</strong>
+                        <span>{{ __('messages.living-square') }}</span> <strong>{{ $estate->living_square }}</strong>
                     </div>
                     <div>
-                        <span>Loggia:</span> <strong>{{ $estate->loggia }}</strong>
+                        <span>{{ __('messages.kitchen-square') }}</span> <strong>{{ $estate->kitchen_square }}</strong>
+                    </div>
+                </div>
+                <div class="estate-show-parameters mt-2">
+                    <div>
+                        <span>{{ __('messages.bathroom') }}</span> <strong>{{ $estate->bathroom }}</strong>
+                    </div>
+                    <div>
+                        <span>{{ __('messages.balcony') }}</span> <strong>{{ $estate->balcony }}</strong>
+                    </div>
+                    <div>
+                        <span>{{ __('messages.loggia') }}</span> <strong>{{ $estate->loggia }}</strong>
                     </div>
                 </div>
                 <div class="d-flex flex-column mt-2">
-                    <strong>Estate Conditions:</strong>
+                    <strong>{{ __('messages.condition') }}</strong>
                     <p>
                         {!! $estate->condition !!}
                     </p>
@@ -84,22 +84,22 @@
             </div>
 
             <div class="col-12 d-flex flex-column p-2 justify-content-between m-1 mt-2 border border-danger rounded">
-                <h4>Prices:</h4>
+                <h4>{{ __('messages.prices') }}</h4>
                 <div class="estate-show-parameters p-2 m-1 mt-2 font-weight-bold">
                     <div>
-                        <span>Price:</span> <strong class="text-primary">{{ $estate->price }}</strong>
+                        <span>{{ __('messages.price') }}</span> <strong class="text-primary">{{ $estate->price }}</strong>
                     </div>
                     <div>
-                        <span>Minimal Price:</span> <strong class="text-danger">{{ $estate->min_price }}</strong>
+                        <span>{{ __('messages.minimal-price') }}</span> <strong class="text-danger">{{ $estate->min_price }}</strong>
                     </div>
                     <div>
-                        <span>Final Price:</span> <strong class="text-success">{{ $estate->final_price }}</strong>
+                        <span>{{ __('messages.final-price') }}</span> <strong class="text-success">{{ $estate->final_price }}</strong>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded">
-                <h4>Advertisment information:</h4>
+                <h4>{{ __('messages.ad-info') }}</h4>
                 <div class="estate-ad-info">
                     <div class="estate-image">
                         <img src="{{ asset('uploads/images/' . $estate->main_image) }}" alt="" class='info-image'>
@@ -114,23 +114,23 @@
             </div>
 
             <div class="col-12 d-flex flex-column p-2 m-1 mt-2 border border-info rounded">
-                <h4>Additional information:</h4>
+                <h4>{{ __('messages.additional-info') }}</h4>
                 <div class="d-flex flex-column mt-2">
-                    <strong>Information about the estate:</strong>
+                    <strong>{{ __('messages.object-info') }}</strong>
                     <p>
                         {!! $estate->object_info !!}
                     </p>
                 </div>
 
                 <div class="d-flex flex-column mt-2">
-                    <strong>Information about owners of the estate:</strong>
+                    <strong>{{ __('messages.owner') }}</strong>
                     <p>
                         {!! $estate->owner_info !!}
                     </p>
                 </div>
 
                 <div class="d-flex flex-column mt-2">
-                    <strong>Final information:</strong>
+                    <strong>{{ __('messages.final-info') }}</strong>
                     <p>
                         {!! $estate->final_info !!}
                     </p>
@@ -141,11 +141,11 @@
             <h3 class="d-flex flex-row justify-content-between mt-2">
                 <span>&nbsp;</span>
                 <div class="d-flex flex-row">
-                    <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">Edit</a>
+                    <a href="{{ route('estates.edit', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary ml-2 btn-admin">{{ __('messages.edit') }}</a>
                     {{ Form::open(['route' => ['estates.destroy', app()->getLocale(), $estate->id], 'method' => 'DELETE']) }}
-                        {{ Form::submit('Delete',['class' => 'btn btn-danger btn-admin ml-2']) }}
+                        {{ Form::submit(__('messages.delete'),['class' => 'btn btn-danger btn-admin ml-2']) }}
                     {{ Form::close() }}
-                    <a href="{{ route('estates.index', app()->getLocale()) }}" class="btn btn-warning ml-2 btn-admin">Back to the List</a>
+                    <a href="{{ route('estates.index', app()->getLocale()) }}" class="btn btn-warning ml-2 btn-admin">{{ __('messages.back') }}</a>
                 </div>
             </h3>
         </div>

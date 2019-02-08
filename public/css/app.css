@@ -10580,6 +10580,7 @@ a.text-dark:focus {
   flex-wrap: wrap;
   width: 100%;
   padding: 0.2em;
+  /* .estate-block */
 }
 
 @media (min-width: 768px) {
@@ -10615,6 +10616,12 @@ a.text-dark:focus {
   height: 200px;
   overflow: hidden;
 }
+
+.content-area .estate-block .property .property-title:after {
+  content: ":";
+}
+
+/* .content-area */
 
 /*
 * Styles for the estate information on the individual page of the estate
@@ -10697,6 +10704,10 @@ a.text-dark:focus {
   }
 }
 
+.estate-area .estate-information-block .estate-properties .properties-block .property .property-title:after {
+  content: ":";
+}
+
 /* estate-area */
 
 .estate-description {
@@ -10714,6 +10725,10 @@ a.text-dark:focus {
   padding: 0.2em;
   border: 1px solid #6c757d;
   border-radius: 0.2em;
+}
+
+.search-form h5:after {
+  content: ":";
 }
 
 .search-form .block-1 {
@@ -10754,6 +10769,10 @@ a.text-dark:focus {
   margin-right: 1em;
 }
 
+.search-form .block-1 .element-group .element-with-label label:after {
+  content: ":";
+}
+
 .search-form .block-1 .element-group .element-with-label input[type=checkbox] {
   max-height: 2em;
   margin-right: 2em;
@@ -10769,6 +10788,7 @@ a.text-dark:focus {
 
 table.estate-list {
   max-width: 100%;
+  /* tr */
 }
 
 table.estate-list thead {
@@ -10786,6 +10806,7 @@ table.estate-list tr {
   flex-direction: row;
   flex-wrap: wrap;
   border-top: 1px solid #6c757d;
+  /* td */
 }
 
 @media (min-width: 768px) {
@@ -10825,6 +10846,11 @@ table.estate-list tr td .estate-label-optional {
   }
 }
 
+table.estate-list tr td .estate-list-param {
+  white-space: nowrap;
+  padding: 0.5em;
+}
+
 table.estate-list tr td.estate-display-optional {
   display: none;
 }
@@ -10846,6 +10872,8 @@ table.estate-list tr.estate-in-process {
 table.estate-list tr.sold-estate {
   background-color: #D5F5E3;
 }
+
+/* table.estate-list */
 
 /*
 * Styles for estate view
@@ -10890,6 +10918,7 @@ table.estate-list tr.sold-estate {
 .estate-show-parameters > div {
   display: flex;
   width: 100%;
+  /* label of the parameter */
 }
 
 @media (min-width: 768px) {
@@ -10900,6 +10929,10 @@ table.estate-list tr.sold-estate {
 
 .estate-show-parameters > div > *:first-child {
   margin-right: 2em;
+}
+
+.estate-show-parameters > div > *:first-child:after {
+  content: ":";
 }
 
 .estate-ad-into {
@@ -10991,13 +11024,26 @@ table.estate-list tr.sold-estate {
 .info-block .info-element-2 {
   display: flex;
   flex-direction: row;
-  width: 100%;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info-block .info-element > label:after,
+.info-block .info-element-3 > label:after,
+.info-block .info-element-2 > label:after {
+  content: ":";
+}
+
+.info-block .info-element input[type=text],
+.info-block .info-element-3 input[type=text],
+.info-block .info-element-2 input[type=text] {
+  max-width: 15em;
 }
 
 @media (min-width: 768px) {
   .info-block .info-element-2 {
-    width: 50%;
+    width: 33%;
   }
 }
 

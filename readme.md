@@ -99,6 +99,7 @@ After a conversation with a realtor:
 
 TODO:: add a new information onto the front-end.
 
-### 2019-02-07
+### 2019-02-08
 
 - The new estate parameters were added in front-end pages.
+- Localization & styling of the CP in progress.....
