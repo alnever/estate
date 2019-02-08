@@ -38,29 +38,84 @@
             <div class="estate-image">
                 <img src="{{ asset('uploads/images/' . $estate->main_image) }}" class="info-image"/>
             </div>
-            <div class="estate-properties">
+            <div class="estate-information-block">
                 <h2>{{ $estate->title }}</h2>
                 <h3>
                     @foreach ($estate->locations as $location)
                         <span class="badge badge-secondary">{{ $location->name }}</span>
                     @endforeach
                 </h3>
-                <div class="property">
-                    <span class="property-title">{{ __('messages.total-square') }}</span>
-                    <span class="property-value">{{ $estate->total_square }}</span>
+                <div class="estate-price">
+                    {{ $estate->price }} {{ __('messages.currency') }}
                 </div>
-                <div class="property">
-                    <span class="property-title">{{ __('messages.living-square') }}</span>
-                    <span class="property-value">{{ $estate->living_square }}</span>
-                </div>
-                <div class="property">
-                    <span class="property-title">{{ __('messages.living-square') }}</span>
-                    <span class="property-value">{{ $estate->living_square }}</span>
-                </div>
+
+                <div class="estate-properties">
+                    <div class="properties-block">
+                        <h4>{{ __('messages.parameters') }}</h4>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.rooms') }}</span>
+                            <span class="property-value">{{ $estate->rooms }}</span>
+                        </div>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.floor') }}</span>
+                            <span class="property-value">{{ $estate->floor }}</span>
+                        </div>
+                    </div>
+
+                    <div class="properties-block">
+                        <h4>{{ __('messages.square') }}</h4>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.total-square') }}</span>
+                            <span class="property-value">
+                                {{ $estate->total_square }}
+                                {!! __('messages.square-meter') !!}
+                            </span>
+                        </div>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.living-square') }}</span>
+                            <span class="property-value">
+                                {{ $estate->living_square }}
+                                {!! __('messages.square-meter') !!}
+                            </span>
+                        </div>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.living-square') }}</span>
+                            <span class="property-value">
+                                {{ $estate->living_square }}
+                                {!! __('messages.square-meter') !!}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="properties-block">
+                        <h4>{{ __('messages.facilities') }}</h4>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.bathroom') }}</span>
+                            <span class="property-value">{{ $estate->bathroom }}</span>
+                        </div>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.balcony') }}</span>
+                            <span class="property-value">{{ $estate->balcony }}</span>
+                        </div>
+                        <div class="property">
+                            <span class="property-title">{{ __('messages.loggia') }}</span>
+                            <span class="property-value">{{ $estate->loggia }}</span>
+                        </div>
+                    </div>
+                </div> <!-- end of .estate-properties -->
             </div>
-        </div>
+        </div><!-- end of .estate-area -->
+
         <div class="estate-description">
-            {!! $estate->description !!}
+            <h4>{{ __('messages.condition') }}</h4>
+            <p>{!! $estate->condition !!}</p>
+        </div>
+
+
+
+        <div class="estate-description">
+            <h4>{{ __('messages.information') }}</h4>
+            <p>{!! $estate->description !!}</p>
         </div>
     </div>
 

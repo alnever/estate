@@ -34,6 +34,30 @@ return [
     'messages-error-added' => 'Возникли ошибки при отправке сообщения. Попробуйте, пожалуйста, позже.',
 
 
+    // estate description messages and titles
+    'square' => 'Площадь',
+    'total-square' => 'Общая площадь:',
+    'living-square' => 'Жилая площадь:',
+    'kitchen-square' => 'Кухня:',
+
+    'facilities' => 'Удобства',
+    'balcony' => 'Балкон:',
+    'loggia' => 'Лоджия:',
+    'bathroom' => 'Санузел:',
+
+    'condition' => 'Состояние',
+
+    'parameters' => 'Параметры',
+    'rooms' => 'Количество комнат:',
+    'floor' => 'Этаж:',
+
+    'information' => 'Информация',
+
+    'square-meter' => 'м<sup>2</sup>',
+
+    'price' => 'Цена',
+    'currency' => 'руб.',
+
 ];
 
  ?>

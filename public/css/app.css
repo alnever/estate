@@ -376,6 +376,7 @@ h6,
 .h2,
 .h3,
 .h4,
+.estate-area .estate-information-block .estate-price,
 .h5,
 .h6 {
   margin-bottom: 0.5rem;
@@ -401,7 +402,8 @@ h3,
 }
 
 h4,
-.h4 {
+.h4,
+.estate-area .estate-information-block .estate-price {
   font-size: 1.35rem;
 }
 
@@ -10622,6 +10624,7 @@ a.text-dark:focus {
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* estate-information-block */
 }
 
 @media (min-width: 768px) {
@@ -10640,7 +10643,33 @@ a.text-dark:focus {
   }
 }
 
-.estate-area .estate-properties {
+.estate-area .estate-information-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 2em;
+  /* estate-properties */
+}
+
+@media (min-width: 768px) {
+  .estate-area .estate-information-block {
+    padding-left: 2em;
+    width: 50%;
+  }
+}
+
+.estate-area .estate-information-block .estate-price {
+  display: block;
+  width: 100%;
+  border: 1px solid #ffed4a;
+  border-radius: 1em;
+  padding: 1em;
+  background-color: #38c172;
+  color: #fff;
+  font-weight: bold;
+}
+
+.estate-area .estate-information-block .estate-properties {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -10649,14 +10678,29 @@ a.text-dark:focus {
 }
 
 @media (min-width: 768px) {
-  .estate-area .estate-properties {
+  .estate-area .estate-information-block .estate-properties {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.estate-area .estate-information-block .estate-properties .properties-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 1em;
+}
+
+@media (min-width: 768px) {
+  .estate-area .estate-information-block .estate-properties .properties-block {
     width: 50%;
   }
 }
 
+/* estate-area */
+
 .estate-description {
-  display: flex;
-  flex-direction: column;
+  padding: 2em;
 }
 
 /**

@@ -141,34 +141,71 @@
         }
     }
 
-    .estate-properties {
+    .estate-information-block {
         display: flex;
         flex-direction: column;
         width: 100%;
         padding-right: 2em;
-        padding-left: 2em;
-
 
         @include media-breakpoint-up(md) {
+            padding-left: 2em;
             width: 50%;
         }
 
-        .property {
-            .property-title {
-
-            }
-
-            .property-value {
-
-            }
+        .estate-price {
+            @extend .h4;
+            display: block;
+            width: 100%;
+            border: 1px solid $yellow;
+            border-radius: 1em;
+            padding: 1em;
+            background-color: $success;
+            color: $white;
+            font-weight: bold;
         }
-    }
-}
+
+        .estate-properties {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-right: 2em;
+            padding-left: 2em;
+
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .properties-block {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-bottom: 1em;
+
+                @include media-breakpoint-up(md) {
+                    width: 50%;
+                }
+
+                .property {
+                    .property-title {
+
+                    }
+
+                    .property-value {
+
+                    }
+                }
+            }
+
+        } /* estate-properties */
+    } /* estate-information-block */
+} /* estate-area */
 
 .estate-description {
-    display: flex;
-    flex-direction: column;;
+    padding: 2em;
 }
+
+
 
 /**
 * Styles for a search form in the admin panel

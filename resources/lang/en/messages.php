@@ -34,6 +34,30 @@ return [
     'messages-error-added' => 'There were some errors occured while message had been sent. Try later, please.',
 
 
+    // estate description messages and titles
+    'square' => 'Square',
+    'total-square' => 'Total Square:',
+    'living-square' => 'Living Square:',
+    'kitchen-square' => 'Kitchen Square:',
+
+    'facilities' => 'Facilities',
+    'balcony' => 'Balcony:',
+    'loggia' => 'Loggia:',
+    'bathroom' => 'Bathroom:',
+
+    'condition' => 'Condition',
+
+    'parameters' => 'Parameters',
+    'rooms' => 'Rooms:',
+    'floor' => 'Floor:',
+
+    'information' => 'Information',
+
+    'square-meter' => 'm<sup>2</sup>',
+
+    'price' => 'Price',
+    'currency' => 'RUB',
+
 ];
 
  ?>

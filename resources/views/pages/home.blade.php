@@ -62,7 +62,61 @@
                     </div>
 
                     <h3>{{ $estate->title }}</h3>
-                    <p>{!! Str::words($estate->description, 30) !!}</p>
+                    <h3>
+                        @foreach ($estate->locations as $location)
+                            <span class="badge badge-secondary">{{ $location->name }}</span>
+                        @endforeach
+                    </h3>
+                    <h4>{{ __('messages.parameters') }}</h4>
+                    <div class="property">
+                        <span class="property-title">{{ __('messages.rooms') }}</span>
+                        <span class="property-value">{{ $estate->rooms }}</span>
+                    </div>
+                    <div class="property">
+                        <span class="property-title">{{ __('messages.floor') }}</span>
+                        <span class="property-value">{{ $estate->floor }}</span>
+                    </div>
+
+                    <h4>{{ __('messages.square') }}</h4>
+                    <div class="property">
+                        <span class="property-title">
+                            {{ __('messages.total-square') }}
+                        </span>
+                        <span class="property-value">
+                            {{ $estate->total_square }}
+                            {!! __('messages.square-meter') !!}
+                        </span>
+                    </div>
+                    <div class="property">
+                        <span class="property-title">
+                            {{ __('messages.living-square') }}
+                        </span>
+                        <span class="property-value">
+                            {{ $estate->living_square }}
+                            {!! __('messages.square-meter') !!}
+                        </span>
+                    </div>
+                    <div class="property">
+                        <span class="property-title">{{ __('messages.living-square') }}</span>
+                        <span class="property-value">
+                            {{ $estate->living_square }}
+                            {!! __('messages.square-meter') !!}
+                        </span>
+                    </div>
+
+                    <h4>{{ __('messages.facilities') }}</h4>
+                    <div class="property">
+                        <span class="property-title">{{ __('messages.bathroom') }}</span>
+                        <span class="property-value">{{ $estate->bathroom }}</span>
+                    </div>
+                    <div class="property">
+                        <span class="property-title">{{ __('messages.balcony') }}</span>
+                        <span class="property-value">{{ $estate->balcony }}</span>
+                    </div>
+                    <div class="property">
+                        <span class="property-title">{{ __('messages.loggia') }}</span>
+                        <span class="property-value">{{ $estate->loggia }}</span>
+                    </div>
 
                     <a href="{{ route('estates.single', [app()->getLocale(), $estate->id]) }}" class="btn btn-primary float-right">
                         {{ __('messages.show-more') }}
